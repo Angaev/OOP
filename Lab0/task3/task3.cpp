@@ -2,37 +2,67 @@
 
 #include "stdafx.h"
 
-void printFibonacciNumber(const int & upperBound)
+void printFibonacciNumbers(const int & upperBound)
 {
 	const int numbersInLine = 5;
-	int prevPrevNumber = 0;
-	int prevNumber = 1;
-	int positionOfPrint = 1;
-	while (prevNumber < (upperBound - prevPrevNumber))
+	int prevNumver = 0;
+	int fibonacciNumber = 1;
+	int positionOfWriter = 1;
+	while (prevNumver < upperBound)
 	{
-
-		int fibonacciNumber = prevNumber + prevPrevNumber;
-		std::cout << fibonacciNumber;
-
-		if (fibonacciNumber + prevNumber < upperBound)
+		std::cout << prevNumver;
+		if (positionOfWriter < numbersInLine) 
 		{
-			std::cout << ", ";
-		}
-
-		prevPrevNumber = prevNumber;
-		prevNumber = fibonacciNumber;
-
-		positionOfPrint++;
-		if (positionOfPrint > numbersInLine)
+			if (fibonacciNumber < upperBound)
+			{
+				std::cout << ", ";
+				positionOfWriter++;
+			}
+		} 
+		else
 		{
 			std::cout << "\n";
-			positionOfPrint = 1;
+			positionOfWriter = 1;
 		}
 
+		fibonacciNumber += prevNumver;
+		prevNumver = fibonacciNumber - prevNumver;
 	}
 
 }
 
+bool PrintFibonacci(const size_t max, const int numbersCountInLine = 5)
+{
+	size_t lastNumber = 0;
+	size_t currentNumber = 1;
+	size_t numbersCount = 1;
+
+	while (lastNumber < max)
+	{
+		std::cout << lastNumber;
+
+		if (numbersCount % numbersCountInLine == 0)
+		{
+			std::cout << "\n";
+		}
+		else
+		{
+			std::cout << " ";
+		}
+
+		if ((currentNumber + lastNumber) > std::numeric_limits<int>::max())
+		{
+			std::cout << "Next Number overflow. Program has to stop.";
+			return false;
+		}
+		currentNumber += lastNumber;
+		lastNumber = currentNumber - lastNumber;
+
+		++numbersCount;
+	}
+
+	return true;
+}
 
 int main(int argc, char* argv[])
 {
@@ -61,7 +91,8 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	printFibonacciNumber(upperBound);
+	printFibonacciNumbers(upperBound);
+	//PrintFibonacci(upperBound);
 	std::cout << "\n" << std::endl;
     return 0;
 }
