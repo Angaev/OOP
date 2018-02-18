@@ -59,7 +59,6 @@ int main(int argc, char* argv[])
 	}
 
 	printFibonacciNumbers(upperBound);
-	//PrintFibonacci(upperBound);
 	std::cout << "\n" << std::endl;
     return 0;
 }
