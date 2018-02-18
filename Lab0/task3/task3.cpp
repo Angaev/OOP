@@ -31,39 +31,6 @@ void printFibonacciNumbers(const int & upperBound)
 
 }
 
-bool PrintFibonacci(const size_t max, const int numbersCountInLine = 5)
-{
-	size_t lastNumber = 0;
-	size_t currentNumber = 1;
-	size_t numbersCount = 1;
-
-	while (lastNumber < max)
-	{
-		std::cout << lastNumber;
-
-		if (numbersCount % numbersCountInLine == 0)
-		{
-			std::cout << "\n";
-		}
-		else
-		{
-			std::cout << " ";
-		}
-
-		if ((currentNumber + lastNumber) > std::numeric_limits<int>::max())
-		{
-			std::cout << "Next Number overflow. Program has to stop.";
-			return false;
-		}
-		currentNumber += lastNumber;
-		lastNumber = currentNumber - lastNumber;
-
-		++numbersCount;
-	}
-
-	return true;
-}
-
 int main(int argc, char* argv[])
 {
 	int upperBound = 0;
