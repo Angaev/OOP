@@ -1,10 +1,10 @@
-// task3.cpp: определяет точку входа для консольного приложения.
-//
+
 
 #include "stdafx.h"
 
 void printFibonacciNumber(const int & upperBound)
 {
+	const int numbersInLine = 5;
 	int prevPrevNumber = 0;
 	int prevNumber = 1;
 	int positionOfPrint = 1;
@@ -23,7 +23,7 @@ void printFibonacciNumber(const int & upperBound)
 		prevNumber = fibonacciNumber;
 
 		positionOfPrint++;
-		if (positionOfPrint > 5)
+		if (positionOfPrint > numbersInLine)
 		{
 			std::cout << "\n";
 			positionOfPrint = 1;
@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
 		try
 		{
 			upperBound = std::stoi(argv[1]);
-			std::cout << "Вы указали верхнюю границу как: " << upperBound <<"\n";
+			std::cout << "Entered number: " << upperBound <<"\n";
 		}
 		catch (const std::exception& e)
 		{
@@ -51,25 +51,17 @@ int main(int argc, char* argv[])
 		}
 		if (upperBound <= 0)
 		{
-			std::cout << "Ошибка! Верхняя граница должна быть >= 1 \n";
+			std::cout << "Error! Upper bound must be >= 1 \n";
 			return 1;
 		}
 	}
 	else
 	{
-		std::cout << "Не указаны входные параметры. Например 'task3.exe 12' \n";
+		std::cout << "Not found parameters! Example: 'task3.exe 12' \n";
 		return 1;
 	}
 
 	printFibonacciNumber(upperBound);
-	/*
-	How it do work:
-	1. Проверить кол-во параметров 
-	2. Взять из параметров число - верхнюю границу (если вообще получится)
-	3. Нет ли переполнения? 
-	4. Выводить числа фибоначи 5 штук в строчку через цикл
-
-	*/
 	std::cout << "\n" << std::endl;
     return 0;
 }
