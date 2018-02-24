@@ -187,6 +187,7 @@
     <None Include="test.bat" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CountLine.txt" />
     <Text Include="input.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
