@@ -9,10 +9,10 @@ rem При запуске без параметров ожидается ненулевой код возврата
 if NOT ERRORLEVEL 1 goto err
 
 rem При запуске с правильными параметрами ожидается нулевой код возврата
-%PROGRAM% test-data\fox.txt "%TEMP%\fox.txt" bird cat
+%PROGRAM% input.txt Hello
 if ERRORLEVEL 1 goto err
 
-echo OK
+echo testing pass!
 exit 0
 
 :err
