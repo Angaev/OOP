@@ -12,6 +12,10 @@ rem При запуске с правильными параметрами ожидается нулевой код возврата
 %PROGRAM% input.txt Hello
 if ERRORLEVEL 1 goto err
 
+rem При запуске с правильными параметрами, но без возможности прочитать файл (не сущ) ожидает ненулевой код возврата
+%PROGRAM% notExistFile.txt Hello
+if NOT ERRORLEVEL 1 goto err
+
 echo testing pass!
 exit 0
 
