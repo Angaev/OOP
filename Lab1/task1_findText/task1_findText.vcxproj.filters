@@ -35,12 +35,4 @@
       <Filter>Файлы ресурсов</Filter>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="input.txt">
-      <Filter>Файлы ресурсов</Filter>
-    </Text>
-    <Text Include="CountLine.txt">
-      <Filter>Файлы ресурсов</Filter>
-    </Text>
-  </ItemGroup>
 </Project>
