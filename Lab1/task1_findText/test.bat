@@ -21,7 +21,6 @@ rem далее тесты связаные непосредственно с поиском подстроки в строке
 rem программа при правильных параметрах и существующем файле прочитает весь файл и выведет строки с совпадениями
 %PROGRAM% test_data\input.txt line >"%temp%\output.txt"
 fc.exe "%temp%\output.txt" "test_data\etalon-answer-for-input.txt" >nul
-if ERRORLEVEL 1 echo "Error find string test 1"
 if ERRORLEVEL 1 goto err
 
 rem при правильных параметрах и сущ файле не находит второе совпадение в одной строке 
@@ -32,6 +31,11 @@ if ERRORLEVEL 1 goto err
 rem при правильных параметрах и сущ файле не находит второе совпадение в одной строке и искомое слово написано в притык с искомым словом
 %PROGRAM% test_data\input3.txt line >"%temp%\output3.txt"
 fc.exe "%temp%\output3.txt" "test_data\etalon-answer-for-input3.txt" >nul
+if ERRORLEVEL 1 goto err
+
+rem тест на правильную обработку пустых строк в указаном файле
+%PROGRAM% test_data\input4.txt line >"%temp%\output4.txt"
+fc.exe "%temp%\output4.txt" "test_data\etalon-answer-for-input4.txt" >nul
 if ERRORLEVEL 1 goto err
 
 echo Testing pass!
