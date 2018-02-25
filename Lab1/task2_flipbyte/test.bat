@@ -13,16 +13,17 @@ rem При запуске с не числовым параметром ожидается не нулевой код возврата
 if not ERRORLEVEL 1 goto err
 
 rem При запуске с числовым параметром ожидается не нулевой код возврата если число <0
-%PROGRAM% -1 
+%PROGRAM% -1 >nul
 if not ERRORLEVEL 1 goto err
 
 rem При запуске с числовым параметром ожидается не нулевой код возврата если число >255
-%PROGRAM% 256 
+%PROGRAM% 256 >nul
 if not ERRORLEVEL 1 goto err
 
-rem При запуске с правильными параметрами, но без возможности прочитать файл (не сущ) ожидает ненулевой код возврата
-rem %PROGRAM% notExistFile.txt Hello >nul
-rem if NOT ERRORLEVEL 1 goto err
+rem При запуске правильными параметрами ожидается переворот введеного байта
+%PROGRAM% 6 >"%temp%\flipByte.txt" 
+fc.exe "%temp%\flipByte.txt" test-data\flip6.txt >nul
+if ERRORLEVEL 1 goto err
 
 echo Testing pass!
 exit 0
