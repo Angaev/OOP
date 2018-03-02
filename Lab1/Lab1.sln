@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "task1_findText", "task1_fin
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "task2_flipbyte", "task2_flipbyte\task2_flipbyte.vcxproj", "{1300EE81-AB7E-47B4-B080-BD6ABEF63525}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "task3_invert", "task3_invert\task3_invert.vcxproj", "{620A55CF-1819-4D8F-A2B2-0DC8FD13EA70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{1300EE81-AB7E-47B4-B080-BD6ABEF63525}.Release|x64.Build.0 = Release|x64
 		{1300EE81-AB7E-47B4-B080-BD6ABEF63525}.Release|x86.ActiveCfg = Release|Win32
 		{1300EE81-AB7E-47B4-B080-BD6ABEF63525}.Release|x86.Build.0 = Release|Win32
+		{620A55CF-1819-4D8F-A2B2-0DC8FD13EA70}.Debug|x64.ActiveCfg = Debug|x64
+		{620A55CF-1819-4D8F-A2B2-0DC8FD13EA70}.Debug|x64.Build.0 = Debug|x64
+		{620A55CF-1819-4D8F-A2B2-0DC8FD13EA70}.Debug|x86.ActiveCfg = Debug|Win32
+		{620A55CF-1819-4D8F-A2B2-0DC8FD13EA70}.Debug|x86.Build.0 = Debug|Win32
+		{620A55CF-1819-4D8F-A2B2-0DC8FD13EA70}.Release|x64.ActiveCfg = Release|x64
+		{620A55CF-1819-4D8F-A2B2-0DC8FD13EA70}.Release|x64.Build.0 = Release|x64
+		{620A55CF-1819-4D8F-A2B2-0DC8FD13EA70}.Release|x86.ActiveCfg = Release|Win32
+		{620A55CF-1819-4D8F-A2B2-0DC8FD13EA70}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
