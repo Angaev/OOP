@@ -22,6 +22,7 @@ if not ERRORLEVEL 1 goto err
 
 rem ѕри запуске правильными параметрами ожидаетс€ переворот введеного байта
 %PROGRAM% 6 >"%temp%\flipByte.txt" 
+if ERRORLEVEL 1 goto err
 fc.exe "%temp%\flipByte.txt" test-data\flip6.txt >nul
 if ERRORLEVEL 1 goto err
 
