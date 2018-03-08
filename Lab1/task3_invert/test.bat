@@ -16,6 +16,11 @@ rem При запуске с правильными параметрами, но не существующим файлом ожидается н
 %PROGRAM% test-data\NoExistFile.txt >nul
 if NOT ERRORLEVEL 1 goto err
 
+rem В файле с матрицей должны быть числа, но не буквы или иные символы
+%PROGRAM% test-data\badMatrix.txt >nul
+if NOT ERRORLEVEL 1 goto err
+
+
 echo Testing pass!
 exit 0
 
