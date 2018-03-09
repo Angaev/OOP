@@ -19,24 +19,33 @@ if NOT ERRORLEVEL 1 goto err
 rem далее тесты связаные непосредственно с поиском подстроки в строке
 
 rem программа при правильных параметрах и существующем файле прочитает весь файл и выведет строки с совпадениями
+echo "test1"
 %PROGRAM% test_data\input.txt line >"%temp%\output.txt"
+if ERRORLEVEL 1 goto err
 fc.exe "%temp%\output.txt" "test_data\etalon-answer-for-input.txt" >nul
 if ERRORLEVEL 1 goto err
 
-rem при правильных параметрах и сущ файле не находит второе совпадение в одной строке 
+rem при правильных параметрах и сущ файле не находит второе совпадение в одной строке (правильное поведение)
+echo "test2"
 %PROGRAM% test_data\input2.txt line >"%temp%\output2.txt"
+if ERRORLEVEL 1 goto err
 fc.exe "%temp%\output2.txt" "test_data\etalon-answer-for-input2.txt" >nul
-if ERRORLEVEL 1 goto err
-
-rem при правильных параметрах и сущ файле не находит второе совпадение в одной строке и искомое слово написано в притык с искомым словом
-%PROGRAM% test_data\input3.txt line >"%temp%\output3.txt"
-fc.exe "%temp%\output3.txt" "test_data\etalon-answer-for-input3.txt" >nul
-if ERRORLEVEL 1 goto err
+if not ERRORLEVEL 1 goto err
 
 rem тест на правильную обработку пустых строк в указаном файле
+echo "test3"
 %PROGRAM% test_data\input4.txt line >"%temp%\output4.txt"
+if ERRORLEVEL 1 goto err
 fc.exe "%temp%\output4.txt" "test_data\etalon-answer-for-input4.txt" >nul
 if ERRORLEVEL 1 goto err
+
+rem если в тексте не удалось найти подстроку, то выведет `Text not found`
+echo "test4"
+%PROGRAM% test_data\input5.txt line >"%temp%\output5.txt"
+if ERRORLEVEL 1 goto err
+fc.exe "%temp%\output5.txt" "test_data\etalon-answer-for-input5.txt" >nul
+if ERRORLEVEL 1 goto err
+
 
 echo Testing pass!
 exit 0
