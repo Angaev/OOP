@@ -4,14 +4,14 @@ void PrintFibonacciNumbers(int upperBound)
 {
 	const int numbersInLine = 5;
 	int prevNumver = 0;
-	int mainNumber = 1;
+	int currentNumber = 1;
 	int positionOfWriter = 1;
 	while (prevNumver < upperBound)
 	{
 		std::cout << prevNumver;
 		if (positionOfWriter < numbersInLine) 
 		{
-			if (mainNumber < upperBound)
+			if (currentNumber < upperBound)
 			{
 				std::cout << ", ";
 				positionOfWriter++;
@@ -23,8 +23,8 @@ void PrintFibonacciNumbers(int upperBound)
 			positionOfWriter = 1;
 		}
 
-		mainNumber += prevNumver;
-		prevNumver = mainNumber - prevNumver;
+		currentNumber += prevNumver;
+		prevNumver = currentNumber - prevNumver;
 	}
 
 }
