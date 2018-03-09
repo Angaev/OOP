@@ -2,17 +2,21 @@ rem %1 - значение первого аргумента командной строки bat-файла (какой он есть)
 rem %~1 - значение первого аргумента командной строки bat-файла с удалением обрамляющих кавычек (если они были)
 
 rem Переменная PROGRAM будет хранить первый аргумент командной строки заключённый в кавычки
+echo "test0_1"
 set PROGRAM="%~1"
 
 rem При запуске без параметров ожидается ненулевой код возврата
+echo "test0_2"
 %PROGRAM% > nul
 if NOT ERRORLEVEL 1 goto err
 
-rem При запуске с правильными параметрами ожидается нулевой код возврата
-%PROGRAM% test_data\input.txt Hello >nul
+rem При запуске с правильными параметрами (файл сущ, подстрока встречается в файле) ожидается нулевой код возврата
+echo "test0_3"
+%PROGRAM% test_data\input.txt line >nul
 if ERRORLEVEL 1 goto err
 
 rem При запуске с правильными параметрами, но без возможности прочитать файл (не сущ) ожидает ненулевой код возврата
+echo "test0_4"
 %PROGRAM% notExistFile.txt Hello >nul
 if NOT ERRORLEVEL 1 goto err
 
@@ -42,7 +46,7 @@ if ERRORLEVEL 1 goto err
 rem если в тексте не удалось найти подстроку, то выведет `Text not found`
 echo "test4"
 %PROGRAM% test_data\input5.txt line >"%temp%\output5.txt"
-if ERRORLEVEL 1 goto err
+if not ERRORLEVEL 1 goto err
 fc.exe "%temp%\output5.txt" "test_data\etalon-answer-for-input5.txt" >nul
 if ERRORLEVEL 1 goto err
 
