@@ -22,7 +22,7 @@ if NOT ERRORLEVEL 1 goto err
 
 rem В файле с матрицей должны быть числа, но не буквы или иные символы
 echo "test4"
-%PROGRAM% test-data\badMatrix.txt >nul
+%PROGRAM% test-data\badMatrix.txt
 if NOT ERRORLEVEL 1 goto err
 
 echo Testing pass!
