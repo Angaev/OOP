@@ -35,7 +35,7 @@ echo "test6"
 %PROGRAM% test-data\matrix.txt >"%TEMP%\output.txt"
 if ERRORLEVEL 1 goto err
 echo "test6_1"
-fc.exe "%TEMP%\output.txt" test-data\matrix.txt  >nul
+fc.exe "%TEMP%\output.txt" test-data\determinant.txt 
 if ERRORLEVEL 1 goto err
 
 
