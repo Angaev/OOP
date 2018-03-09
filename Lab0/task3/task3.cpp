@@ -33,35 +33,6 @@ bool PrintFibonacciNumbers(int upperBound)
 	return true;
 }
 
-void PrintFibonacciNumbers2(int upperBound)
-{
-	const int numbersInLine = 5;
-	int prevNumber = 0;
-	int currentNumber = 1;
-	int orderNumberInCurrentLine = 1;
-	while (prevNumber < upperBound)
-	{
-		std::cout << prevNumber;
-		if (orderNumberInCurrentLine < numbersInLine) 
-		{
-			if (currentNumber < upperBound)
-			{
-				std::cout << ", ";
-				orderNumberInCurrentLine++;
-			}
-		} 
-		else
-		{
-			std::cout << "\n";
-			orderNumberInCurrentLine = 1;
-		}
-
-		currentNumber += prevNumber;
-		prevNumber = currentNumber - prevNumber;
-	}
-
-}
-
 int main(int argc, char* argv[])
 {
 	int upperBound = 0;
