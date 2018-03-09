@@ -26,6 +26,12 @@ if ERRORLEVEL 1 goto err
 fc.exe "%temp%\flipByte.txt" test-data\flip6.txt >nul
 if ERRORLEVEL 1 goto err
 
+rem Проверяем, что программа не всегда выдает код завершения 1
+%PROGRAM% 158 >"%temp%\158.txt" 
+if ERRORLEVEL 1 goto err
+fc.exe "%temp%\158.txt" test-data\flip6.txt >nul
+if not ERRORLEVEL 1 goto err
+
 rem Далее тестируем flip каждого отдельно взятого бита
 
 echo "128"
