@@ -3,28 +3,28 @@
 void PrintFibonacciNumbers(int upperBound)
 {
 	const int numbersInLine = 5;
-	int prevNumver = 0;
+	int prevNumber = 0;
 	int currentNumber = 1;
-	int positionOfWriter = 1;
-	while (prevNumver < upperBound)
+	int orderNumberInCurrentLine = 1;
+	while (prevNumber < upperBound)
 	{
-		std::cout << prevNumver;
-		if (positionOfWriter < numbersInLine) 
+		std::cout << prevNumber;
+		if (orderNumberInCurrentLine < numbersInLine) 
 		{
 			if (currentNumber < upperBound)
 			{
 				std::cout << ", ";
-				positionOfWriter++;
+				orderNumberInCurrentLine++;
 			}
 		} 
 		else
 		{
 			std::cout << "\n";
-			positionOfWriter = 1;
+			orderNumberInCurrentLine = 1;
 		}
 
-		currentNumber += prevNumver;
-		prevNumver = currentNumber - prevNumver;
+		currentNumber += prevNumber;
+		prevNumber = currentNumber - prevNumber;
 	}
 
 }
