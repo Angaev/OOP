@@ -30,13 +30,15 @@ echo "test5"
 %PROGRAM% test-data\matrix.txt >nul
 if ERRORLEVEL 1 goto err
 
-rem Программа может загрузить валидную матрицу из файла и вывести матрицу (ожидается нулевой код возврата)
+rem Программа может загрузить валидную матрицу из файла и выводит определитель матрицы (ожидается нулевой код возврата)
 echo "test6"
 %PROGRAM% test-data\matrix.txt >"%TEMP%\output.txt"
 if ERRORLEVEL 1 goto err
 echo "test6_1"
-fc.exe "%TEMP%\output.txt" test-data\matrix.txt 
+fc.exe "%TEMP%\output.txt" test-data\matrix.txt  >nul
 if ERRORLEVEL 1 goto err
+
+
 
 echo Testing pass!
 exit 0
