@@ -1,6 +1,39 @@
 #include "stdafx.h"
 
-void PrintFibonacciNumbers(int upperBound)
+bool PrintFibonacciNumbers(int upperBound)
+{
+	const int numbersInLine = 5;
+	size_t lastNumber = 0;
+	size_t currentNumber = 1;
+	size_t numbersCount = 1;
+
+	while (lastNumber <= upperBound)
+	{
+		std::cout << lastNumber;
+
+		if (numbersCount % numbersInLine == 0)
+		{
+			std::cout << "\n";
+		}
+		else
+		{
+			std::cout << " ";
+		}
+
+		if ((currentNumber + lastNumber) > std::numeric_limits<int>::max())
+		{
+			return false;
+		}
+		currentNumber += lastNumber;
+		lastNumber = currentNumber - lastNumber;
+
+		++numbersCount;
+	}
+
+	return true;
+}
+
+void PrintFibonacciNumbers2(int upperBound)
 {
 	const int numbersInLine = 5;
 	int prevNumber = 0;
@@ -56,7 +89,11 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	PrintFibonacciNumbers(upperBound);
+	if (!PrintFibonacciNumbers(upperBound))
+	{
+		std::cout << "OverFlow!\n";
+		return 1;
+	}
 	std::cout << "\n" << std::endl;
     return 0;
 }
