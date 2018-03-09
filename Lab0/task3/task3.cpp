@@ -1,8 +1,6 @@
-
-
 #include "stdafx.h"
 
-void printFibonacciNumbers(const int & upperBound)
+void PrintFibonacciNumbers(int upperBound)
 {
 	const int numbersInLine = 5;
 	int prevNumver = 0;
@@ -58,7 +56,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	printFibonacciNumbers(upperBound);
+	PrintFibonacciNumbers(upperBound);
 	std::cout << "\n" << std::endl;
     return 0;
 }
