@@ -1,11 +1,14 @@
-﻿// TrimBlanks.cpp: определяет точку входа для консольного приложения.
-//
-
 #include "stdafx.h"
+#include "trimblanks.h"
 
-
-int main()
+std::string TrimBlanks(const std::string & str)
 {
-    return 0;
-}
+	size_t printableCharacterPosition = str.find_first_not_of(" ");
+	if (printableCharacterPosition == std::string::npos)
+	{
+		return {};
+	}
+	size_t lastPrintableCharacterPosition = str.find_last_not_of(" ");
+	return str.substr(printableCharacterPosition, lastPrintableCharacterPosition - printableCharacterPosition + 1);
 
+}
