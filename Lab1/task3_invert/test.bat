@@ -31,12 +31,12 @@ echo "test5"
 if ERRORLEVEL 1 goto err
 
 rem Программа может загрузить валидную матрицу из файла и выводит определитель матрицы (ожидается нулевой код возврата)
-echo "test6"
-%PROGRAM% test-data\matrix.txt >"%TEMP%\output.txt"
-if ERRORLEVEL 1 goto err
-echo "test6_1"
-fc.exe "%TEMP%\output.txt" test-data\determinant.txt 
-if ERRORLEVEL 1 goto err
+rem echo "test6"
+rem %PROGRAM% test-data\matrix.txt >"%TEMP%\output.txt"
+rem if ERRORLEVEL 1 goto err
+rem echo "test6_1"
+rem fc.exe "%TEMP%\output.txt" test-data\determinant.txt 
+rem if ERRORLEVEL 1 goto err
 
 
 
