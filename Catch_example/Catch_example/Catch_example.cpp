@@ -27,6 +27,7 @@ TEST_CASE("Arithmetic series are computed", "[ArithmeticSeries]")
 	REQUIRE(CalcArithmeticSeries(1, 2, 1) == 1);
 	REQUIRE(CalcArithmeticSeries(58, 23, 23) == 7153);
 	REQUIRE(CalcArithmeticSeries(258, 78, 187) == 1404744);
+	REQUIRE(CalcArithmeticSeries(1, 2, -1) == 0);
 }
 
 TEST_CASE("Fibonacci numbers are computed", "[fibonacci]")

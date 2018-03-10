@@ -38,6 +38,7 @@ echo "test6_1"
 fc.exe "%TEMP%\output.txt" test-data\determinant.txt 
 if ERRORLEVEL 1 goto err >nul
 
+rem Заметка: вообще, должн быть тест не функий программы, а самой программы
 
 
 echo Testing pass!
