@@ -30,15 +30,6 @@ echo "test5"
 %PROGRAM% test-data\matrix.txt >nul
 if ERRORLEVEL 1 goto err
 
-rem Программа может загрузить валидную матрицу из файла и выводит определитель матрицы (ожидается нулевой код возврата)
-echo "test6"
-%PROGRAM% test-data\matrix.txt >"%TEMP%\output.txt"
-if ERRORLEVEL 1 goto err
-echo "test6_1"
-fc.exe "%TEMP%\output.txt" test-data\determinant.txt 
-if ERRORLEVEL 1 goto err >nul
-
-rem Заметка: вообще, должн быть тест не функий программы, а самой программы
 
 
 echo Testing pass!
