@@ -40,7 +40,7 @@ rem Программа правильно инвертирует матрицу
 echo "test6"
 %PROGRAM% test-data\matrix.txt >"%TEMP%\result.txt"
 if ERRORLEVEL 1 goto err
-fc.exe "%TEMP%\result.txt" test-data\invertMatrix.txt
+fc.exe "%TEMP%\result.txt" test-data\invertMatrix.txt > nul
 
 echo Testing pass!
 exit 0
