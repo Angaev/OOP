@@ -20,17 +20,27 @@ echo "test3"
 %PROGRAM% test-data\NoExistFile.txt >nul
 if NOT ERRORLEVEL 1 goto err
 
-rem В файле с матрицей должны быть числа, но не буквы или иные символы
+rem В файле с матрицей должны быть числа, но не буквы или иные символы ожидается не нулевой код возврата
 echo "test4"
 %PROGRAM% test-data\badMatrix.txt >nul
 if NOT ERRORLEVEL 1 goto err
+
+rem при запуске с пустым файлом ожидается не нулевой код возврата
+echo "test4_1"
+%PROGRAM% test-data\emptyFile.txt >nul
+if NOT ERRORLEVEL 1 goto err
+
 
 rem Программа может загрузить валидную матрицу из файла (ожидается нулевой код возврата)
 echo "test5"
 %PROGRAM% test-data\matrix.txt >nul
 if ERRORLEVEL 1 goto err
 
-
+rem Программа правильно инвертирует матрицу
+echo "test6"
+%PROGRAM% test-data\matrix.txt >"%TEMP%\result.txt"
+if ERRORLEVEL 1 goto err
+fc.exe "%TEMP%\result.txt" test-data\invertMatrix.txt
 
 echo Testing pass!
 exit 0
