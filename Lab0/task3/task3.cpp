@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-bool PrintFibonacciNumbers(int upperBound)
+void PrintFibonacciNumbers(int upperBound)
 {
 	const int numbersInLine = 5;
 	size_t lastNumber = 0;
@@ -20,17 +20,12 @@ bool PrintFibonacciNumbers(int upperBound)
 			std::cout << " ";
 		}
 
-		if ((currentNumber + lastNumber) > std::numeric_limits<int>::max())
-		{
-			return false;
-		}
 		currentNumber += lastNumber;
 		lastNumber = currentNumber - lastNumber;
 
 		++numbersCount;
 	}
 
-	return true;
 }
 
 int main(int argc, char* argv[])
@@ -60,10 +55,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	if (!PrintFibonacciNumbers(upperBound))
-	{
-		return 1;
-	}
+	PrintFibonacciNumbers(upperBound);
 	std::cout << "\n" << std::endl;
     return 0;
 }
