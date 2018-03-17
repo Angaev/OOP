@@ -62,7 +62,6 @@ int main(int argc, char* argv[])
 
 	if (!PrintFibonacciNumbers(upperBound))
 	{
-		std::cout << "OverFlow!\n";
 		return 1;
 	}
 	std::cout << "\n" << std::endl;
