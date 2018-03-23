@@ -25,11 +25,16 @@ echo "test4"
 %PROGRAM% test-data\badMatrix.txt >nul
 if NOT ERRORLEVEL 1 goto err
 
+
 rem при запуске с пустым файлом ожидается не нулевой код возврата
 echo "test4_1"
 %PROGRAM% test-data\emptyFile.txt >nul
 if NOT ERRORLEVEL 1 goto err
 
+rem при запуске с не полной матрицей в файле ожидается не нулевой код возврата
+echo "test4_2"
+%PROGRAM% test-data\halfMatrix.txt >nul
+if NOT ERRORLEVEL 1 goto err
 
 rem Программа может загрузить валидную матрицу из файла (ожидается нулевой код возврата)
 echo "test5"
@@ -41,6 +46,7 @@ echo "test6"
 %PROGRAM% test-data\matrix.txt >"%TEMP%\result.txt"
 if ERRORLEVEL 1 goto err
 fc.exe "%TEMP%\result.txt" test-data\invertMatrix.txt > nul
+if ERRORLEVEL 1 goto err
 
 echo Testing pass!
 exit 0
