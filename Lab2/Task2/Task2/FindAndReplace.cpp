@@ -11,11 +11,13 @@ std::string FindAndReplace(std::string const& subject, std::string const& search
 	*/
 	std::string afterReplace = subject;
 	
-	size_t found = subject.find(search);
-	if (found != std::string::npos)
+	size_t found = afterReplace.find(search);
+	while (found == std::string::npos)
 	{
 		afterReplace.replace(found, found + search.size(), replace);
+		found = afterReplace.find(search);
 	}
+
 
 	return afterReplace;
 }
