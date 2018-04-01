@@ -35,8 +35,8 @@ void PrintArray(const std::vector<double>& printArray)
 double FindArithmeticMeanPositiveElements(const std::vector<double>& searchArray)
 {
 	double arithmeticMean = 0;
-	int count = 0;
-	for (size_t i = 0; i < searchArray.size(); i++)
+	size_t count = 0;
+	for (size_t i : searchArray)
 	{
 		if (searchArray[i] >= 0)
 		{
