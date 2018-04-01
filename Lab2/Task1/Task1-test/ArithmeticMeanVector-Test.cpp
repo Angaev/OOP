@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "../Task1/ArithmeticMeanVector.h"
 #include <vector>
+#include <algorithm>
 
 bool IsArrayEqual(const std::vector<double>& array1, const std::vector<double>& array2)
 {

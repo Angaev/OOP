@@ -36,11 +36,11 @@ double FindArithmeticMeanPositiveElements(const std::vector<double>& searchArray
 {
 	double arithmeticMean = 0;
 	size_t count = 0;
-	for (size_t i : searchArray)
+	for (double item : searchArray)
 	{
-		if (searchArray[i] >= 0)
+		if (item >= 0)
 		{
-			arithmeticMean += searchArray[i];
+			arithmeticMean += item;
 			count++;
 		}
 	}
@@ -54,4 +54,6 @@ void SumNumberToArrayElements(std::vector<double>& arr, double number)
 	{
 		arr[i] += number;
 	}
+
+	//std::transform(arr.begin(), arr.end(), arr.begin(), +number);
 }
