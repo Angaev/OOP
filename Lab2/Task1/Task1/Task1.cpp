@@ -11,8 +11,7 @@ int main()
 {
 	cout << "Enter your array: \n";
 	vector<double> numbers = ReadArray();
-	double arithmeticMean = FindArithmeticMeanPositiveElements(numbers);
-	SumNumberToArrayElements(numbers, arithmeticMean);
+	ProcessVector(numbers);
 	SortArray(numbers);
 	PrintArray(numbers);
     return 0;

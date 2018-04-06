@@ -44,3 +44,9 @@ void SumNumberToArrayElements(std::vector<double>& arr, double number)
 {
 	std::transform(arr.begin(), arr.end(), arr.begin(), [=](double element) {return element += number; });
 }
+
+void ProcessVector(std::vector<double>& inArray)
+{
+	double ArithmeticMean = FindArithmeticMeanPositiveElements(inArray);
+	SumNumberToArrayElements(inArray, ArithmeticMean);
+}
