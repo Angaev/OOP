@@ -5,19 +5,12 @@
 #include <algorithm>
 #include "ArithmeticMeanVector.h"
 
-bool PrintHello()
-{
-	std::cout << "Hello\n";
-	return true;
-}
 
-void ReadArray(std::vector<double>& inputArray)
+
+std::vector<double> ReadArray()
 {
-	double input;
-	while (std::cin >> input)
-	{
-		inputArray.push_back(input);
-	}
+	std::vector<double> numbers(std::istream_iterator<double>(std::cin), (std::istream_iterator<double>()));
+	return numbers;
 }
 
 void SortArray(std::vector<double>& data)
@@ -27,7 +20,6 @@ void SortArray(std::vector<double>& data)
 
 void PrintArray(const std::vector<double>& printArray)
 {
-
 	copy(printArray.begin(), printArray.end(), std::ostream_iterator<double>(std::cout, " "));
 	std::cout << "\n";
 }
@@ -50,10 +42,5 @@ double FindArithmeticMeanPositiveElements(const std::vector<double>& searchArray
 
 void SumNumberToArrayElements(std::vector<double>& arr, double number)
 {
-	for (size_t i = 0; i < arr.size(); i++)
-	{
-		arr[i] += number;
-	}
-
-	//std::transform(arr.begin(), arr.end(), arr.begin(), +number);
+	std::transform(arr.begin(), arr.end(), arr.begin(), [=](double element) {return element += number; });
 }

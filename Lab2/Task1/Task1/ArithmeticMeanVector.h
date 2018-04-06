@@ -1,8 +1,6 @@
 #pragma once
 
-bool PrintHello();
-
-void ReadArray(std::vector<double>& inputArray);
+std::vector<double> ReadArray();
 
 void PrintArray(const std::vector<double>& printArray);
 

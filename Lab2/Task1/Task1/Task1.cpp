@@ -10,8 +10,7 @@ using namespace std;
 int main()
 {
 	cout << "Enter your array: \n";
-	vector<double> numbers;
-	ReadArray(numbers);
+	vector<double> numbers = ReadArray();
 	double arithmeticMean = FindArithmeticMeanPositiveElements(numbers);
 	SumNumberToArrayElements(numbers, arithmeticMean);
 	SortArray(numbers);
