@@ -18,4 +18,10 @@ TEST_CASE("FindAndReplace function tests")
 	subject = "Hello World, Hello Matrix, Hello everyone";
 	result = "Goodbye World, Goodbye Matrix, Goodbye everyone";
 	REQUIRE(FindAndReplace(subject, search, replace) == result);
+	/*
+	subject = "Good news everyone";
+	search = "";
+	replace = "AAAAA";
+	result = "Good news everyone";
+	REQUIRE(FindAndReplace(subject, search, replace) == result);*/
 }
