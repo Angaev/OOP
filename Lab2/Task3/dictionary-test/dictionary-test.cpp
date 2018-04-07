@@ -11,6 +11,6 @@ TEST_CASE("dictionary add new word test")
 {
 	map<string, string> testDictionary;
 	string engWord = "hello";
-	string rusWord = "Привет";
+	string rusWord = "привет";
 	AddWord(engWord, rusWord, testDictionary);
 }
