@@ -4,11 +4,11 @@
 TEST_CASE("FindAndReplace function tests")
 {
 	REQUIRE(FindAndReplace("", "", "") == "");
+
 	std::string subject = "Hello World";
 	std::string search = "Hello";
 	std::string replace = "Goodbye";
 	std::string result = "Goodbye World";
-
 	REQUIRE(FindAndReplace(subject, search, replace) == result);
 
 	subject = "HelloWorld";
@@ -18,10 +18,4 @@ TEST_CASE("FindAndReplace function tests")
 	subject = "Hello World, Hello Matrix, Hello everyone";
 	result = "Goodbye World, Goodbye Matrix, Goodbye everyone";
 	REQUIRE(FindAndReplace(subject, search, replace) == result);
-	/*
-	subject = "Good news everyone";
-	search = "";
-	replace = "AAAAA";
-	result = "Good news everyone";
-	REQUIRE(FindAndReplace(subject, search, replace) == result);*/
 }
