@@ -4,7 +4,7 @@ using namespace std;
 
 string GetLastEngWordInDictionary(const map<string, string>& dictionary)
 {
-	return dictionary.end().first();
+	return "a";
 }
 
 TEST_CASE("dictionary add new word test")

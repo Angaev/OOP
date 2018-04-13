@@ -9,7 +9,7 @@ std::string FindAndReplace(std::string const& subject, std::string const& search
 		replace - на что заменить
 		search - подстрока поиска
 	*/
-	if (search.empty() || replace.empty())
+	if (search.empty() || subject.empty())
 	{
 		return subject;
 	}
