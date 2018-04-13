@@ -27,7 +27,6 @@ TEST_CASE("If search occurs several times, it will replace all")
 	REQUIRE(FindAndReplace(subject, search, replace) == result);
 }
 
-
 TEST_CASE("If search empty then return subject")
 {
 	std::string subject = "Hello World";
