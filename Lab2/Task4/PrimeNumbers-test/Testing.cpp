@@ -66,9 +66,10 @@ TEST_CASE("if function GeneratePrimeNumbersSet give negative number then functio
 	REQUIRE(isSetEqual(etalon, result));
 }
 
+#ifndef _DEBUG
 TEST_CASE("if function GeneratePrimeNumbersSet give 100000000 then function return set with size 5761455")
 {
 	set<int> result = GeneratePrimeNumbersSet(100000000);
 	REQUIRE(result.size() == 5761455);
 }
-
+#endif

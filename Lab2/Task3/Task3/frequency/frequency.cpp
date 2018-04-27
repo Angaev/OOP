@@ -4,15 +4,23 @@
 
 using namespace std;
 
-void Fucntion(char c)
+void CollectCharToWords(char c, string &word, vector<string> & result)
 {
-
+	if (isalpha(c)) 
+	{
+		word += c;
+	}
+	else 
+	{ 
+		result.push_back(word); 
+		word.clear(); 
+	}
 }
 
 vector<string>GetWordsFromString(string const& line)
 {
 	vector<string> result = {};
 	string word;
-	for_each(line.begin(), line.end(), [&result, &word](char c) { if (isalpha(c)) { word += c; } else { result.push_back(word); word.clear(); }; });
+	for_each(line.begin(), line.end(), [&result, &word](char c) {CollectCharToWords(c, word, result); });
 	return result;
 }
