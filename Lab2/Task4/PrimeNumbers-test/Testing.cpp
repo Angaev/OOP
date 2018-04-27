@@ -5,13 +5,13 @@
 
 using namespace std;
 
-bool isVectorEqual(std::vector<bool> const& vect1, std::vector<bool> const& vect2)
+bool isVectorEqual(vector<bool> const& vect1, vector<bool> const& vect2)
 {
 	
 	return vect1 == vect2;
 }
 
-bool isCountTrueElementsEqual(std::vector<bool> const& vect, size_t size)
+bool isCountTrueElementsEqual(vector<bool> const& vect, size_t size)
 {
 	size_t count = 0;
 	for_each(vect.begin(), vect.end(), [&count](bool element) {if (element) { count++; }});
