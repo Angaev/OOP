@@ -3,5 +3,5 @@
 #include <set>
 #include <vector>
 
-std::vector<bool>GetSieve(int upperBound);
-std::set<int>GeneratePrimeNumbersSet(int upperBound);
+std::vector<bool> GetSieve(int upperBound);
+std::set<int> GeneratePrimeNumbersSet(int upperBound);

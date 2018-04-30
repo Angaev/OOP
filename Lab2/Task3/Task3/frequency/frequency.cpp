@@ -1,26 +1,31 @@
 #include "stdafx.h"
 #include "../frequency/frequency.h"
-#include <algorithm>
 
 using namespace std;
+using namespace boost;
 
-void CollectCharToWords(char c, string &word, vector<string> & result)
+void CountWordToStatistics(string const& word, map<string, size_t>& statisctic)
 {
-	if (isalpha(c)) 
+	map<string, size_t>::iterator pos = statisctic.find(word);
+	if (pos != statisctic.end())
 	{
-		word += c;
+		pos -> second++;
 	}
-	else 
-	{ 
-		result.push_back(word); 
-		word.clear(); 
+	else
+	{
+		statisctic.insert(pair<string, size_t>(word, 1));
 	}
 }
 
-vector<string>GetWordsFromString(string const& line)
+void PrintFrequency(map<string, size_t> const& statisctic)
 {
-	vector<string> result = {};
-	string word;
-	for_each(line.begin(), line.end(), [&result, &word](char c) {CollectCharToWords(c, word, result); });
-	return result;
+	for (auto item = statisctic.begin(); item != statisctic.end(); item++)
+	{
+		cout << item->first << " -> " << (static_cast<double>(item->second) / static_cast<double>(statisctic.size())) * 100 <<"\n";
+	}
+}
+
+string StringToLowerCase(string const& line)
+{
+	return to_lower_copy(line);
 }

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-vector<bool>GetSieve(int upperBound)
+vector<bool> GetSieve(int upperBound)
 {
 	if (upperBound < 0)
 	{
@@ -19,7 +19,10 @@ vector<bool>GetSieve(int upperBound)
 	{
 		if (sieve[i])
 		{
-			for (int j = i * i; j <= upperBound;  j += i)
+			int step;
+			(i == 2) ? (step = 2) : (step = i * 2);
+
+			for (int j = i * i; j <= upperBound;  j += step)
 			{
 				sieve[j] = false;
 			}
@@ -28,15 +31,15 @@ vector<bool>GetSieve(int upperBound)
 	return sieve;
 }
 
-set<int>GeneratePrimeNumbersSet(int upperBound)
+set<int> GeneratePrimeNumbersSet(int upperBound)
 {
 	set<int> primeNumbersSet;
-	vector<bool> sieve = GetSieve(upperBound);
+	vector<bool> isPrime = GetSieve(upperBound);
 	for (int i = 2; i <= upperBound; i++)
 	{
-		if (sieve[i])
+		if (isPrime[i])
 		{
-			primeNumbersSet.insert(i);
+			primeNumbersSet.insert(primeNumbersSet.end(), i);
 		}
 	}
 	return primeNumbersSet;

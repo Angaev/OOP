@@ -7,23 +7,41 @@
 
 using namespace std;
 
-bool isVectorsEqual(vector<string> const& v1, vector<string> const& v2)
+bool IsMapEqual(map<string, size_t> map1, map<string, size_t> map2)
 {
-	return v1 == v2;
+	return map1 == map2;
 }
 
-TEST_CASE("Function GetWordsFromString(`hello world`) return words `hello` and `world`")
+TEST_CASE("If start CountWordToStatistics(`hello`, testMap)  then testMap will be equal etalonMap")
 {
-	vector<string> etalon = { "hello", "world" };
-	string line = "hello    world";
-	vector<string> result = GetWordsFromString(line);
-	REQUIRE(isVectorsEqual(result, etalon));
+	map<string, size_t> etalonMap = {{ "hello", 1 }};
+	string word = "hello";
+	map<string, size_t> testMap;
+	CountWordToStatistics(word, testMap);
+	REQUIRE(IsMapEqual(testMap, etalonMap));
 }
 
-TEST_CASE("GetWordsFromString(`hello world `) return words `hello` and `world`")
+TEST_CASE("If add word `hello` again into the testMap then testMap will be like (`hello`, 2) (equal etalonMap)")
 {
-	vector<string> etalon = { "hello", "world" };
-	string line = "hello world ";
-	vector<string> result = GetWordsFromString(line);
-	REQUIRE(isVectorsEqual(result, etalon));
+	map<string, size_t> etalonMap = { { "hello", 2 } };
+	string word = "hello";
+	map<string, size_t> testMap;
+	CountWordToStatistics(word, testMap);
+	CountWordToStatistics(word, testMap); 
+	REQUIRE(IsMapEqual(testMap, etalonMap));
+}
+
+TEST_CASE("Words with different case are equal")
+{
+	string wordUpperCase = "HeLLo";
+	string wordLowCase = "hello";
+	REQUIRE(wordLowCase == StringToLowerCase(wordUpperCase));
+}
+
+TEST_CASE("Russian words with different case are equal too")
+{
+	setlocale(LC_ALL, "Russian");
+	string wordUpperCase = "ПрИВЕТ";
+	string wordLowCase = "привет";
+	REQUIRE(wordLowCase == StringToLowerCase(wordUpperCase));
 }
