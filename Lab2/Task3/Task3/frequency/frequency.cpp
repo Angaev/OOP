@@ -25,7 +25,9 @@ void PrintFrequency(map<string, size_t> const& statisctic)
 	}
 }
 
-string StringToLowerCase(string const& line)
+void StringToLowerCase(string & line)
 {
-	return to_lower_copy(line);
+	//return to_lower_copy(line);
+	//for_each(line.begin(), line.end(), [](char ch) {tolower(ch); });
+	transform(line.begin(), line.end(), line.begin(), tolower);
 }
