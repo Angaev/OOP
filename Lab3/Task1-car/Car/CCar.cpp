@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "CCar.h"
+#include <vector>
+#include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -27,23 +30,14 @@ void RangeErrorMessage()
 	cout << "Out of speed range\n";
 }
 
-CCar::CCar()
-{
-}
-
-
-CCar::~CCar()
-{
-}
-
-bool CCar::GetEngineStatus() const
+bool CCar::IsEngineOn() const
 {
 	return m_engineStatus;
 }
 
 bool CCar::TurnOnEngine()
 {
-	if (!GetEngineStatus())
+	if (!IsEngineOn())
 	{
 		m_engineStatus = true; 
 		return true;
@@ -57,7 +51,7 @@ bool CCar::TurnOnEngine()
 
 bool CCar::TurnOffEngine()
 {
-	if (GetEngineStatus() && (GetTurnGear() == 0) && (GetSpeed() == 0))
+	if (IsEngineOn() && (GetTurnGear() == 0) && (GetSpeed() == 0))
 	//двигатель включен и передача нейтраль
 	{
 		m_engineStatus = false;
@@ -88,7 +82,7 @@ bool CCar::SetGear(int const gear)
 		return false;
 	}
 
-	if (!GetEngineStatus() && (gear != 0))
+	if (!IsEngineOn() && (gear != 0))
 	{
 		cout << "Turn on engine before set gear \n";
 		return false;
@@ -146,7 +140,7 @@ bool CCar::SetSpeed(int const speed)
 		return false;
 	}
 
-	if (!GetEngineStatus())
+	if (!IsEngineOn())
 	{
 		cout << "Turn on engine before set speed\n";
 		return false;

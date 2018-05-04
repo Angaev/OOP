@@ -2,11 +2,6 @@
 #include "../../../Catch/catch.hpp"
 #include "../Car/CCar.h"
 
-bool IsIntNumberEqual(int const numb1, int const numb2)
-{
-	return numb1 == numb2;
-}
-
 bool IsEnumEqual(Direction const enum1, Direction const enum2)
 {
 	return enum1 == enum2;
@@ -16,7 +11,7 @@ bool IsEnumEqual(Direction const enum1, Direction const enum2)
 TEST_CASE("The new car is turn off engine")
 {
 	CCar car;
-	REQUIRE(!car.GetEngineStatus());
+	REQUIRE(!car.IsEngineOn());
 }
 
 TEST_CASE("If start stopped engine then engine start and TurnOnEngine return true")
@@ -37,7 +32,7 @@ TEST_CASE("If turn off engine when he is start then engine is turn off")
 	CCar car;
 	car.TurnOnEngine();
 	car.TurnOffEngine();
-	REQUIRE(!car.GetEngineStatus());
+	REQUIRE(!car.IsEngineOn());
 }
 
 TEST_CASE("If turn off engine when he is stopped then TurnOffEngine return false")
@@ -87,7 +82,7 @@ TEST_CASE("You can start drive car (gear 0 -> 1, engine - on) ")
 	CCar car;
 	car.TurnOnEngine();
 	CHECK(car.SetGear(1));
-	REQUIRE(IsIntNumberEqual(1, car.GetTurnGear()));
+	REQUIRE(1 == car.GetTurnGear());
 }
 
 TEST_CASE("Can't set an existing gear")
@@ -124,7 +119,7 @@ TEST_CASE("If speed = 0 then direction == stop ")
 {
 	CCar car;
 	car.TurnOnEngine();
-	CHECK(IsIntNumberEqual(0, car.GetSpeed()));
+	CHECK(0 == car.GetSpeed());
 	REQUIRE(IsEnumEqual(Direction::STOP, car.GetDirection()));
 }
 
@@ -152,7 +147,7 @@ TEST_CASE("Can't set speed if engine - Off")
 	CCar car;
 	int lastSpeed = car.GetSpeed();
 	REQUIRE(!car.SetSpeed(10));
-	REQUIRE(IsIntNumberEqual(lastSpeed, car.GetSpeed()));
+	REQUIRE(lastSpeed == car.GetSpeed());
 }
 
 TEST_CASE("If move reverse, set speed 5, turn 0 gear and set speed 4 then direction will still be reverse")
@@ -172,7 +167,7 @@ TEST_CASE("Can set speed = 10 if engine - ON, speed = 0")
 	CCar car;
 	car.TurnOnEngine();
 	CHECK(car.SetGear(-1));
-	CHECK(IsIntNumberEqual(-1, car.GetTurnGear()));
+	CHECK(-1 == car.GetTurnGear());
 	REQUIRE(car.SetSpeed(10));
 }
 

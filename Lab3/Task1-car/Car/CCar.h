@@ -1,7 +1,4 @@
 #pragma once
-#include <vector>
-#include <iostream>
-#include <cmath>
 
 enum class Direction
 {
@@ -13,11 +10,9 @@ enum class Direction
 class CCar
 {
 public:
-	CCar();
-	~CCar();
 
 	//возвращает состояние двигателя
-	bool GetEngineStatus() const;
+	bool IsEngineOn() const;
 
 	//стартует двигатель
 	bool TurnOnEngine();
