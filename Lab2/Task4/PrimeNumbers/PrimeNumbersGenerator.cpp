@@ -19,8 +19,7 @@ vector<bool> GetSieve(int upperBound)
 	{
 		if (sieve[i])
 		{
-			int step;
-			(i == 2) ? (step = 2) : (step = i * 2);
+			int step = (i == 2) ? (2) : (i * 2);
 
 			for (int j = i * i; j <= upperBound;  j += step)
 			{

@@ -2,7 +2,6 @@
 #include "../frequency/frequency.h"
 
 using namespace std;
-using namespace boost;
 
 void CountWordToStatistics(string const& word, map<string, size_t>& statisctic)
 {
@@ -21,13 +20,11 @@ void PrintFrequency(map<string, size_t> const& statisctic)
 {
 	for (auto item = statisctic.begin(); item != statisctic.end(); item++)
 	{
-		cout << item->first << " -> " << (static_cast<double>(item->second) / static_cast<double>(statisctic.size())) * 100 <<"\n";
+		cout << item->first << " -> " << item->second <<"\n";
 	}
 }
 
 void StringToLowerCase(string & line)
 {
-	//return to_lower_copy(line);
-	//for_each(line.begin(), line.end(), [](char ch) {tolower(ch); });
 	transform(line.begin(), line.end(), line.begin(), tolower);
 }
