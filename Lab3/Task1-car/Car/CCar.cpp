@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <cmath>
+#include <string>
 
 using namespace std;
 
@@ -25,9 +26,9 @@ bool IsBetween(int const numb, pair<int, int> range)
 	return false;
 }
 
-void RangeErrorMessage()
+void RangeErrorMessage(string &lastError)
 {
-	cout << "Out of speed range\n";
+	lastError = "Out of speed range\n";
 }
 
 bool CCar::IsEngineOn() const
@@ -44,7 +45,7 @@ bool CCar::TurnOnEngine()
 	}
 	else
 	{
-		cout << "Engine already turn on\n";
+		m_lastError = "Engine already turn on\n";
 		return false;
 	}
 }
@@ -61,15 +62,15 @@ bool CCar::TurnOffEngine()
 	{
 		if (GetTurnGear() != 0)
 		{
-			cout << "Set 0 gear before turn off engine\n";
+			m_lastError = "Set 0 gear before turn off engine\n";
 			return false;
 		}
 		if (GetSpeed() != 0)
 		{
-			cout << "Speed must be 0 before turn off engine\n";
+			m_lastError = "Speed must be 0 before turn off engine\n";
 			return false;
 		}
-		cout << "Engine already turn off\n";
+		m_lastError = "Engine already turn off\n";
 		return false;
 	}
 }
@@ -78,13 +79,13 @@ bool CCar::SetGear(int const gear)
 {
 	if (gear < -1 || gear > 5)
 	{
-		cout << "wrong gear number \n";
+		m_lastError = "wrong gear number \n";
 		return false;
 	}
 
 	if (!IsEngineOn() && (gear != 0))
 	{
-		cout << "Turn on engine before set gear \n";
+		m_lastError = "Turn on engine before set gear \n";
 		return false;
 	}
 	if (gear == 0)
@@ -95,6 +96,11 @@ bool CCar::SetGear(int const gear)
 
 	if (gear == -1 && IsBetween(m_speed, speedRange[0]))
 	{
+		if (GetTurnGear() != 0)
+		{
+			m_lastError = "Set 0 gear before \n";
+			return false;
+		}
 		m_gear = gear;
 		return true;
 	}
@@ -123,7 +129,7 @@ bool CCar::SetGear(int const gear)
 		m_gear = gear;
 		return true;
 	}
-	cout << "Can't set gear\n";
+	m_lastError = "Can't set gear\n";
 	return false;
 }
 
@@ -136,13 +142,13 @@ bool CCar::SetSpeed(int const speed)
 {
 	if (speed < 0)
 	{
-		cout << "Incorrect speed\n";
+		m_lastError = "Incorrect speed\n";
 		return false;
 	}
 
 	if (!IsEngineOn())
 	{
-		cout << "Turn on engine before set speed\n";
+		m_lastError = "Turn on engine before set speed\n";
 		return false;
 	}
 	if (GetTurnGear() == -1)
@@ -152,7 +158,7 @@ bool CCar::SetSpeed(int const speed)
 			m_speed = speed * -1;
 			return true;
 		}
-		RangeErrorMessage();
+		RangeErrorMessage(m_lastError);
 		return false;
 	}
 	
@@ -163,7 +169,7 @@ bool CCar::SetSpeed(int const speed)
 			m_speed = speed;
 			return true;
 		}
-		RangeErrorMessage();
+		RangeErrorMessage(m_lastError);
 		return false;
 	}
 
@@ -174,7 +180,7 @@ bool CCar::SetSpeed(int const speed)
 			m_speed = speed;
 			return true;
 		}
-		RangeErrorMessage();
+		RangeErrorMessage(m_lastError);
 		return false;
 	}
 
@@ -185,7 +191,7 @@ bool CCar::SetSpeed(int const speed)
 			m_speed = speed;
 			return true;
 		}
-		RangeErrorMessage();
+		RangeErrorMessage(m_lastError);
 		return false;
 	}
 
@@ -196,7 +202,7 @@ bool CCar::SetSpeed(int const speed)
 			m_speed = speed;
 			return true;
 		}
-		RangeErrorMessage();
+		RangeErrorMessage(m_lastError);
 		return false;
 	}
 
@@ -207,7 +213,7 @@ bool CCar::SetSpeed(int const speed)
 			m_speed = speed;
 			return true;
 		}
-		RangeErrorMessage();
+		RangeErrorMessage(m_lastError);
 		return false;
 	}
 
@@ -223,7 +229,7 @@ bool CCar::SetSpeed(int const speed)
 			m_speed = speed;
 			return true;
 		}
-		cout << "Speed can only be reduced\n";
+		m_lastError = "Speed can only be reduced\n";
 		return false;
 	}
 	return false;
@@ -250,4 +256,9 @@ Direction CCar::GetDirection() const
 		direction = Direction::FORWARD;
 	}
 	return direction;
+}
+
+std::string CCar::GetLastError()
+{
+	return m_lastError;
 }

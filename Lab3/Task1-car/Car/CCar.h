@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 enum class Direction
 {
@@ -34,10 +35,14 @@ public:
 
 	//возвращает направление движени€
 	Direction GetDirection() const;
+	
+	//возвращает последнюю ошибку
+	std::string GetLastError();
 
 private:
 	bool m_engineStatus = false; //true - двигатель заведен, false - все остальное
 	int m_gear = 0; // передача
 	int m_speed = 0; // скорость
+	std::string m_lastError; // последн€€ ошибка
 };
 
