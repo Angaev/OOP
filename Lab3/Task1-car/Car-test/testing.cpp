@@ -14,7 +14,7 @@ TEST_CASE("The new car is turn off engine")
 	REQUIRE(!car.IsEngineOn());
 }
 
-TEST_CASE("If start stopped engine then engine start and TurnOnEngine return true")
+TEST_CASE("If start stopped engine then engine start")
 {
 	CCar car;
 	REQUIRE(car.TurnOnEngine());
@@ -216,7 +216,7 @@ TEST_CASE("test speed range  for 1 gear")
 	REQUIRE(!car.SetSpeed(-1));
 }
 	//2 gear
-TEST_CASE("test speed range  for 2 gear")
+TEST_CASE("test speed range for 2 gear")
 {
 	CCar car;
 	car.TurnOnEngine();
@@ -262,7 +262,7 @@ TEST_CASE("test speed range  for 4 gear")
 }
 
 	//5 gear
-TEST_CASE("test speed range  for 5 gear")
+TEST_CASE("test speed range for 5 gear")
 {
 	CCar car;
 	car.TurnOnEngine();

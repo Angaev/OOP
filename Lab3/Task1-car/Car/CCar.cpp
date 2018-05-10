@@ -53,7 +53,7 @@ bool CCar::TurnOnEngine()
 bool CCar::TurnOffEngine()
 {
 	if (IsEngineOn() && (GetTurnGear() == 0) && (GetSpeed() == 0))
-	//двигатель включен и передача нейтраль
+	//двигатель включен, передача нейтраль и скорость 0
 	{
 		m_engineStatus = false;
 		return true;
