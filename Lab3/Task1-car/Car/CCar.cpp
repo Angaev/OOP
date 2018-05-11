@@ -33,14 +33,14 @@ void RangeErrorMessage(string &lastError)
 
 bool CCar::IsEngineOn() const
 {
-	return m_engineStatus;
+	return m_engineOn;
 }
 
 bool CCar::TurnOnEngine()
 {
 	if (!IsEngineOn())
 	{
-		m_engineStatus = true; 
+		m_engineOn = true; 
 		return true;
 	}
 	else
@@ -55,7 +55,7 @@ bool CCar::TurnOffEngine()
 	if (IsEngineOn() && (GetTurnGear() == 0) && (GetSpeed() == 0))
 	//двигатель включен, передача нейтраль и скорость 0
 	{
-		m_engineStatus = false;
+		m_engineOn = false;
 		return true;
 	}
 	else
@@ -258,7 +258,7 @@ Direction CCar::GetDirection() const
 	return direction;
 }
 
-std::string CCar::GetLastError()
+std::string CCar::GetLastError() const
 {
 	return m_lastError;
 }

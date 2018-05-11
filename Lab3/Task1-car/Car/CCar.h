@@ -37,10 +37,10 @@ public:
 	Direction GetDirection() const;
 	
 	//возвращает последнюю ошибку
-	std::string GetLastError();
+	std::string GetLastError() const;
 
 private:
-	bool m_engineStatus = false; //true - двигатель заведен, false - все остальное
+	bool m_engineOn = false; //true - двигатель заведен, false - все остальное
 	int m_gear = 0; // передача
 	int m_speed = 0; // скорость
 	std::string m_lastError; // последн€€ ошибка
