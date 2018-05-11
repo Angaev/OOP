@@ -8,8 +8,6 @@
 
 using namespace std;
 
-//setlocale(LC_ALL, "rus");
-
 bool IsMapEqual(map<string, size_t> map1, map<string, size_t> map2)
 {
 	return map1 == map2;
