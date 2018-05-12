@@ -1,19 +1,14 @@
 #include "stdafx.h"
 #include "../frequency/frequency.h"
+#include <iostream>
+#include <algorithm>
+#include <cctype>
 
 using namespace std;
 
-void CountWordToStatistics(string const& word, map<string, size_t>& statisctic)
+void CountWordToStatistics(string const& word, map<string, size_t>& statistic)
 {
-	map<string, size_t>::iterator pos = statisctic.find(word);
-	if (pos != statisctic.end())
-	{
-		pos -> second++;
-	}
-	else
-	{
-		statisctic.insert(pair<string, size_t>(word, 1));
-	}
+	++statistic[word];
 }
 
 void PrintFrequency(map<string, size_t> const& statisctic)

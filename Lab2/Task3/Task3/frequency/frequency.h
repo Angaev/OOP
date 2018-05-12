@@ -1,13 +1,10 @@
 #pragma once
 #include "stdafx.h"
 #include <string>
-#include <vector>
 #include <map>
-#include <iostream>
-#include <algorithm>
-#include <cctype>
 
-void CountWordToStatistics(std::string const& word, std::map<std::string, size_t>& statisctic);
+
+void CountWordToStatistics(std::string const& word, std::map<std::string, size_t>& statistic);
 
 void PrintFrequency(std::map<std::string, size_t> const& statisctic);
 
