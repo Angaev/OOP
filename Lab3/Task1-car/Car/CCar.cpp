@@ -101,6 +101,13 @@ bool CCar::SetGear(int const gear)
 			m_lastError = "Set 0 gear before \n";
 			return false;
 		}
+
+		if (GetSpeed() != 0)
+		{
+			m_lastError = "Set 0 speed before \n";
+			return false;
+		}
+
 		m_gear = gear;
 		return true;
 	}

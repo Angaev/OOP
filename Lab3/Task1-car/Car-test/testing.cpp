@@ -135,6 +135,17 @@ TEST_CASE("revers gear can turn on olny always full stop (speed = 0, gear = 0)")
 	//can set gear (need 0 gear)
 	CHECK(car.SetGear(-1));
 	CHECK(car.GetTurnGear() == -1);
+
+	car.SetSpeed(10);
+	car.SetGear(0);
+	//can't set gear (speed -10, gear 0)
+	CHECK(!car.SetGear(-1));
+	CHECK(car.GetTurnGear() == 0);
+
+	car.SetSpeed(0);
+	//can set gear (speed 0, gear 0)
+	CHECK(car.SetGear(-1));
+	CHECK(car.GetTurnGear() == -1);
 }
 
 //direction testing
