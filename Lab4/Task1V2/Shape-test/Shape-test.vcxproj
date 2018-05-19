@@ -159,13 +159,16 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Shape\CLineSegment.h" />
     <ClInclude Include="..\Shape\Point.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Shape\CLineSegment.cpp" />
     <ClCompile Include="..\Shape\Point.cpp" />
     <ClCompile Include="CpointTesting.cpp" />
+    <ClCompile Include="LineSegment-test.cpp" />
     <ClCompile Include="main.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
