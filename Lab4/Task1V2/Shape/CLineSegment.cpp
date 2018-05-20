@@ -24,7 +24,9 @@ double CLineSegment::GetPerimeter() const
 
 std::string CLineSegment::ToString() const
 {
-	return static_cast<string>("Area: ") + to_string(GetArea()) + static_cast<string>(" Perimetr: ") + to_string(GetPerimeter()) + static_cast<string>(" Outline color: ") + GetOutlineColor() + "\n";
+	return static_cast<string>("Area: ") + to_string(GetArea()) + 
+		static_cast<string>(" Perimetr: ") + to_string(GetPerimeter()) + 
+		static_cast<string>(" Outline color: ") + GetOutlineColor() + "\n";
 }
 
 std::string CLineSegment::GetOutlineColor() const

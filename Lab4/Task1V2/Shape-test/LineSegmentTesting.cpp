@@ -1,13 +1,9 @@
 #include "stdafx.h"
 #include "../../../Catch/catch.hpp"
 #include "../Shape/CLineSegment.h"
+#include "SecondaryFunctions.h"
 
 using namespace std;
-
-bool IsPointEqual(CPoint const& p1, CPoint const& p2)
-{
-	return (p1.GetCoordinateX() == p2.GetCoordinateX()) && (p1.GetCoordinateY() == p2.GetCoordinateY()) ? true : false;
-}
 
 TEST_CASE("Line can save own coordiants")
 {
@@ -34,5 +30,5 @@ TEST_CASE("Line have perimeter")
 {
 	CLineSegment line{ CPoint{ 10.5, 15.3 }, CPoint{ 15.6, 2 }, "ff0000" };
 
-	CHECK(round(line.GetPerimeter()*100)/100 == 14.24); //14.24429
+	CHECK(RoundWithDecimal(line.GetPerimeter()) == 14.24); //14.24429
 }
