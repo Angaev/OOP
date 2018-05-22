@@ -5,7 +5,7 @@
 class CRectangle : public ISolidShape
 {
 public:
-	CRectangle(CPoint const& leftTop, CPoint const& rightBottom, double width, double height, 
+	CRectangle(CPoint const& leftTop, CPoint const& rightBottom, 
 		std::string const& outlineColor, std::string const& fillColor);
 	
 	//возврашает площадь прямоугольника

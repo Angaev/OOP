@@ -5,15 +5,15 @@
 
 using namespace std;
 
-CRectangle::CRectangle(CPoint const& leftTop, CPoint const& rightBottom, double width, double height,
+CRectangle::CRectangle(CPoint const& leftTop, CPoint const& rightBottom,
 	std::string const& outlineColor, std::string const& fillColor) :
 	m_leftTopPoint(leftTop),
 	m_rightBottomPoint(rightBottom),
-	m_width(width),
-	m_height(height),
 	m_outlineColor(outlineColor),
 	m_fillColor(fillColor)
 {
+	m_width = abs(m_rightBottomPoint.GetCoordinateX() - m_leftTopPoint.GetCoordinateX());
+	m_height = abs(m_rightBottomPoint.GetCoordinateY() - m_leftTopPoint.GetCoordinateY());
 }
 
 double CRectangle::GetArea() const
