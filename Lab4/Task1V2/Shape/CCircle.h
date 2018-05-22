@@ -7,8 +7,6 @@ class CCircle :	public ISolidShape
 public:
 	CCircle(CPoint const& center, double radious, std::string const& outlineColor, std::string const& fillColor);
 
-	~CCircle() = default;
-
 	//возвращает площадь окружности
 	double GetArea() const override;
 

@@ -7,8 +7,6 @@ class CRectangle : public ISolidShape
 public:
 	CRectangle(CPoint const& leftTop, CPoint const& rightBottom, double width, double height, 
 		std::string const& outlineColor, std::string const& fillColor);
-
-	~CRectangle() = default;
 	
 	//возврашает площадь прямоугольника
 	double GetArea() const override;

@@ -5,8 +5,8 @@
 class CTriangle : public ISolidShape
 {
 public:
-	CTriangle(CPoint const& vertex1, CPoint const& vertex2, CPoint const& vertex3, std::string const& outlineColor, std::string const& fillColor);
-	~CTriangle() = default;
+	CTriangle(CPoint const& vertex1, CPoint const& vertex2, CPoint const& vertex3, 
+		std::string const& outlineColor, std::string const& fillColor);
 
 	//возвращает площадь
 	double GetArea() const override;

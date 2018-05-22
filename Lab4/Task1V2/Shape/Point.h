@@ -9,7 +9,6 @@ public:
 	//возвращает координаты точки
 	std::pair<double, double> GetCoordinates() const;
 
-
 	//назначает новые координаты точки
 	void SetCoordinates(const double x, const double y);
 

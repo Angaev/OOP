@@ -6,7 +6,6 @@ class CLineSegment : public IShape
 {
 public:
 	CLineSegment(const CPoint & first, const CPoint & second, const std::string& color);
-	~CLineSegment() = default;
 
 	//возвращает площадь
 	double GetArea() const override;
