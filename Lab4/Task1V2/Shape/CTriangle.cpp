@@ -47,7 +47,7 @@ double CTriangle::GetPerimeter() const
 
 std::string CTriangle::ToString() const
 {
-	return static_cast<string>("Area: ") + to_string(GetArea()) + 
+	return static_cast<string>("Shape: triangle") + static_cast<string>("Area: ") + to_string(GetArea()) +
 		static_cast<string>(" Perimetr: ") + to_string(GetPerimeter()) + 
 		static_cast<string>(" Outline color: ") + GetOutlineColor() + 
 		static_cast<string>(" Fill color: ") + GetFillColor() + "\n";

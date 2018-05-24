@@ -27,7 +27,10 @@ double CCircle::GetPerimeter() const
 
 std::string CCircle::ToString() const
 {
-	return std::string();
+	return static_cast<string>("Shape: circle ") + static_cast<string>("Area: ") + to_string(GetArea()) +
+		static_cast<string>(" Perimetr: ") + to_string(GetPerimeter()) +
+		static_cast<string>(" Outline color: ") + GetOutlineColor() +
+		static_cast<string>(" Fill color: ") + GetFillColor() + "\n";
 }
 
 std::string CCircle::GetOutlineColor() const

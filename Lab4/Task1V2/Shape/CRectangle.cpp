@@ -28,7 +28,7 @@ double CRectangle::GetPerimeter() const
 
 std::string CRectangle::ToString() const
 {
-	return static_cast<string>("Area: ") + to_string(GetArea()) +
+	return static_cast<string>("Shape: line ") + static_cast<string>("Area: ") + to_string(GetArea()) +
 		static_cast<string>(" Perimetr: ") + to_string(GetPerimeter()) +
 		static_cast<string>(" Outline color: ") + GetOutlineColor() +
 		static_cast<string>(" Fill color: ") + GetFillColor() + "\n";
