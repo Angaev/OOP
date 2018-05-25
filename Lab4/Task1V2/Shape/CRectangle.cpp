@@ -28,10 +28,16 @@ double CRectangle::GetPerimeter() const
 
 std::string CRectangle::ToString() const
 {
-	return static_cast<string>("Shape: line ") + static_cast<string>("Area: ") + to_string(GetArea()) +
-		static_cast<string>(" Perimetr: ") + to_string(GetPerimeter()) +
-		static_cast<string>(" Outline color: ") + GetOutlineColor() +
-		static_cast<string>(" Fill color: ") + GetFillColor() + "\n";
+	return "Shape: rectangle "s + 
+		"Area: "s + to_string(GetArea()) +
+		" Perimetr: "s + to_string(GetPerimeter()) +
+		" Outline color: "s + GetOutlineColor() +
+		" Fill color: "s + GetFillColor() + 
+		" Left Top point: ("s + to_string(GetLeftTop().GetCoordinateX()) + "  " + to_string(GetLeftTop().GetCoordinateY()) + ") " +
+		" Right Bottom point: ("s + to_string(GetRightBottom().GetCoordinateX()) + "  " + to_string(GetRightBottom().GetCoordinateY()) + ") " +
+		" Width: ("s + to_string(GetWidth()) + "  " +
+		" Height: "s + to_string(GetHeight()) + 
+		"\n"s;
 }
 
 std::string CRectangle::GetOutlineColor() const
