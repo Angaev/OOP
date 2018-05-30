@@ -106,3 +106,164 @@ TEST_CASE("You can deduct time")
 
 	CHECK(totalTime.GetTimeStamp() == 86381);
 }
+
+
+TEST_CASE("You can do time1 += time2")
+{
+	CTime time1(14, 30, 25);
+	CTime time2(03, 18, 44); 
+
+	time1 += time2;
+
+	CHECK(time1.GetTimeStamp() == 64149);
+
+	CTime time3(200);
+	time3 += time3;
+
+	CHECK(time3.GetTimeStamp() == 400);
+
+	CTime time4(LAST_SECOND_OF_DAY);
+	time4 += 5;
+	CHECK(time4.GetTimeStamp() == 4);
+}
+
+TEST_CASE("You can do time1 -= time2")
+{
+	CTime time1(14, 30, 25);
+	CTime time2(03, 18, 44);
+
+	time1 -= time2;
+
+	CHECK(time1.GetTimeStamp() == 40301);
+
+	CTime time3(200);
+	time3 -= time3;
+
+	CHECK(time3.GetTimeStamp() == 0);
+
+	CTime time4(0);
+	time4 -= 5;
+	CHECK(time4.GetTimeStamp() == 86395);
+}
+
+TEST_CASE("You can multiply time on time")
+{
+	CTime time1(10);
+	CTime time2(10);
+
+	CTime time3 = time1 * time2;
+
+	CHECK(time3.GetTimeStamp() == 100);
+
+	CTime time4(10000);
+	CTime time5 = time3 * time4;
+	CHECK(time5.GetTimeStamp() == 49600);
+}
+
+TEST_CASE("You can multiply time on int numb")
+{
+	CTime time1(10);
+	CTime time3 = time1 * 10;
+	CHECK(time3.GetTimeStamp() == 100);
+
+	CTime time4(10000);
+	CTime time5 = time3 * time4;
+	CHECK(time5.GetTimeStamp() == 49600);
+
+	CTime time6 = 10 * time1;
+	CHECK(time6.GetTimeStamp() == 100);
+}
+
+TEST_CASE("You can division time on int numb")
+{
+	CTime time1(9, 15, 40);
+	CTime time2 = time1 / 3;
+	CHECK(time2.GetTimeStamp() == 11113);
+
+	CHECK_THROWS(time1 / 0);
+
+}
+
+TEST_CASE("You can division time on time (return number)")
+{
+	CTime time1(9, 15, 40);
+	CTime time2(3, 10, 20);
+	CTime time0(0, 0, 0);
+
+	unsigned divisionResult = time1 / time2;
+
+	CHECK(divisionResult == 2);
+
+	CHECK_THROWS(time1 / time0);
+
+}
+
+TEST_CASE("You can do time1 *= time2")
+{
+	CTime time1(14, 30, 25);
+	CTime time2(03, 18, 44);
+
+	time1 *= time2;
+
+	CHECK(time1.GetTimeStamp() == 46100);
+
+	CTime time3(20);
+	time3 *= time3;
+
+	CHECK(time3.GetTimeStamp() == 400);
+
+	CTime time4(LAST_SECOND_OF_DAY);
+	time4 *= 5;
+	CHECK(time4.GetTimeStamp() == 86395);
+}
+
+TEST_CASE("You can do time1 /= number")
+{
+	CTime time1(9, 15, 40);
+
+	time1 /= 3;
+
+	CHECK(time1.GetTimeStamp() == 11113);
+
+	CHECK_THROWS(time1 /= 0);
+
+}
+
+TEST_CASE("You can compare two time value (use operator == or !=)")
+{
+	CTime time1(100);
+	CTime time2(100);
+	CTime time3(99);
+	CTime time4(101);
+
+	CHECK(time1 == time2);
+	CHECK(time1 != time3);
+	CHECK(time1 != time4);
+	CHECK(time1 == time1);
+}
+
+TEST_CASE("You can compare two time value (use operator < or >)")
+{
+	CTime time1(100);
+	CTime time2(100);
+	CTime time3(99);
+	CTime time4(101);
+
+	CHECK(!(time1 > time2));
+	CHECK(time1 > time3);
+	CHECK(time1 < time4);
+	CHECK(!(time1 > time1));
+}
+
+TEST_CASE("You can compare two time value (use operator <= or >=)")
+{
+	CTime time1(100);
+	CTime time2(100);
+	CTime time3(99);
+	CTime time4(101);
+
+	CHECK(time1 >= time2);
+	CHECK(time1 >= time3);
+	CHECK(time1 <= time4);
+	CHECK(time1 >= time1);
+}
