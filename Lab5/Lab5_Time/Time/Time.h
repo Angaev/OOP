@@ -26,7 +26,6 @@ public:
 	//возвращает timestamp
 	unsigned GetTimeStamp() const;
 
-
 	//префиксный инкремент
 	CTime & operator++();
 

@@ -17,6 +17,11 @@ TEST_CASE("You can set time in format seconds after 00:00:00")
 	CTime time(66685);
 	REQUIRE(time.GetTimeStamp() == 66685);
 }
+/*
+TEST_CASE("You can't create time like 25.61.61")
+{
+	CHECK_THROWS(CTime time(25, 61, 61));
+}*/
 
 TEST_CASE("You can get saved time")
 {
