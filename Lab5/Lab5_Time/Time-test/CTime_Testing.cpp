@@ -153,32 +153,17 @@ TEST_CASE("You can do time1 -= time2")
 	CHECK(time4.GetTimeStamp() == 86395);
 }
 
-TEST_CASE("You can multiply time on time")
-{
-	CTime time1(10);
-	CTime time2(10);
-
-	CTime time3 = time1 * time2;
-
-	CHECK(time3.GetTimeStamp() == 100);
-
-	CTime time4(10000);
-	CTime time5 = time3 * time4;
-	CHECK(time5.GetTimeStamp() == 49600);
-}
-
 TEST_CASE("You can multiply time on int numb")
 {
 	CTime time1(10);
-	CTime time3 = time1 * 10;
-	CHECK(time3.GetTimeStamp() == 100);
+	CTime totalTime = time1 * 5;
+	CHECK(totalTime.GetTimeStamp() == 50);
+	CHECK(!(totalTime.GetTimeStamp() == 10));
 
-	CTime time4(10000);
-	CTime time5 = time3 * time4;
-	CHECK(time5.GetTimeStamp() == 49600);
+	CTime totalTime2 = 5 * time1;
+	CHECK(totalTime2.GetTimeStamp() == 50);
+	CHECK(!(totalTime2.GetTimeStamp() == 10));
 
-	CTime time6 = 10 * time1;
-	CHECK(time6.GetTimeStamp() == 100);
 }
 
 TEST_CASE("You can division time on int numb")
@@ -205,23 +190,15 @@ TEST_CASE("You can division time on time (return number)")
 
 }
 
-TEST_CASE("You can do time1 *= time2")
+TEST_CASE("You can do time1 *= unsigned_number")
 {
 	CTime time1(14, 30, 25);
 	CTime time2(03, 18, 44);
 
-	time1 *= time2;
+	time1 *= 3;
+	CHECK(time1.GetTimeStamp() == 70275);
+	CHECK(!(time1.GetTimeStamp() == 5));
 
-	CHECK(time1.GetTimeStamp() == 46100);
-
-	CTime time3(20);
-	time3 *= time3;
-
-	CHECK(time3.GetTimeStamp() == 400);
-
-	CTime time4(LAST_SECOND_OF_DAY);
-	time4 *= 5;
-	CHECK(time4.GetTimeStamp() == 86395);
 }
 
 TEST_CASE("You can do time1 /= number")

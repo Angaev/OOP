@@ -18,11 +18,6 @@ public:
 	// возвращает количество секунд
 	unsigned GetSeconds()const;
 
-	// возвращает информацию о корректности времени.
-	// Например, после вызова конструктора CTime time(99, 32, 83);
-	//	метод time.IsValid() должен возвращать false
-	bool IsValid()const;
-
 	//возвращает timestamp
 	unsigned GetTimeStamp() const;
 
@@ -50,11 +45,8 @@ public:
 	//присвоение вычитания
 	CTime & operator -= (CTime const & subTime);
 
-	//умножение время на время
-	CTime const operator * (CTime const& multpTime)const;
-
-	//умножение время на int
-	CTime const friend operator * (int numb, CTime const& multpTime);
+	//умножение время на number
+	CTime const operator*(unsigned number)const;
 
 	//деление времени на число
 	CTime const operator / (unsigned number)const;
@@ -63,30 +55,32 @@ public:
 	unsigned operator / (CTime const& time) const;
 
 	//присвоение умножения 
-	CTime & operator *= (CTime const & time);
+	CTime & operator *= (unsigned number);
 
 	//присвоение деления
 	CTime & operator /= (unsigned number);
 
 	//равны ли два времен
-	bool const operator == (CTime const& time) const;
+	bool operator == (CTime const& time) const;
 
 	//не равны ли два времен
-	bool const operator != (CTime const& time) const;
+	bool operator != (CTime const& time) const;
 
 	//больше чем другое время
-	bool const operator > (CTime const& time) const;
+	bool operator > (CTime const& time) const;
 
 	//меньше чем другое время
-	bool const operator < (CTime const& time) const;
+	bool operator < (CTime const& time) const;
 
 	//больше или равно чем другое время
-	bool const operator >= (CTime const& time) const;
+	bool operator >= (CTime const& time) const;
 
 	//меньше или равно чем другое время
-	bool const operator <= (CTime const& time) const;
+	bool operator <= (CTime const& time) const;
 
 private:
 	unsigned m_timestamp = 0;
 };
 
+//умножение number на время
+CTime const operator*(unsigned number, CTime const& time);

@@ -49,11 +49,6 @@ unsigned CTime::GetSeconds() const
 	return m_timestamp % SECONDS_IN_MINUTE;
 }
 
-bool CTime::IsValid() const
-{
-	return false;
-}
-
 unsigned CTime::GetTimeStamp() const
 {
 	return m_timestamp;
@@ -156,18 +151,12 @@ CTime & CTime::operator-=(CTime const & subTime)
 
 }
 
-CTime const CTime::operator*(CTime const & multpTime)const
+CTime const CTime::operator*(unsigned number) const
 {
-	auto multiplyResult = m_timestamp;
-	multiplyResult = PreventOverFlowSecond(m_timestamp * multpTime.m_timestamp);
-	return CTime(multiplyResult);
+	unsigned resultmultiply = m_timestamp * number;
+	return CTime(PreventOverFlowSecond(resultmultiply));
 }
 
-CTime const operator*(int numb, CTime const & multpTime)
-{
-	auto multiplyResult = PreventOverFlowSecond(multpTime.m_timestamp * numb);
-	return CTime(multiplyResult);
-}
 
 CTime const CTime::operator / (unsigned number) const
 {
@@ -189,10 +178,9 @@ unsigned CTime::operator/(CTime const & time) const
 	return (m_timestamp / time.m_timestamp);
 }
 
-CTime & CTime::operator*=(CTime const & time)
+CTime & CTime::operator*=(unsigned number)
 {
-	m_timestamp = PreventOverFlowSecond(m_timestamp * time.m_timestamp);
-
+	m_timestamp = PreventOverFlowSecond(m_timestamp * number);
 	return *this;
 }
 
@@ -207,34 +195,38 @@ CTime & CTime::operator/=(unsigned number)
 	return *this;
 }
 
-bool const CTime::operator==(CTime const & time) const
+bool CTime::operator==(CTime const & time) const
 {
 	return (m_timestamp == time.m_timestamp);
 }
 
-bool const CTime::operator!=(CTime const & time) const
+bool CTime::operator!=(CTime const & time) const
 {
 	return (m_timestamp != time.m_timestamp);
 }
 
-bool const CTime::operator>(CTime const & time) const
+bool CTime::operator>(CTime const & time) const
 {
 	return (m_timestamp > time.m_timestamp);
 }
 
-bool const CTime::operator<(CTime const & time) const
+bool CTime::operator<(CTime const & time) const
 {
 	return (m_timestamp < time.m_timestamp);
 }
 
-bool const CTime::operator>=(CTime const & time) const
+bool CTime::operator>=(CTime const & time) const
 {
 	return (m_timestamp >= time.m_timestamp);;
 }
 
-bool const CTime::operator<=(CTime const & time) const
+bool CTime::operator<=(CTime const & time) const
 {
 	return (m_timestamp <= time.m_timestamp);
 }
 
-
+CTime const operator*(unsigned number, CTime const & time)
+{
+	unsigned resultMultiply = number * time.GetTimeStamp();
+	return CTime(PreventOverFlowSecond(resultMultiply));
+}
