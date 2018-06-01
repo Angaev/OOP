@@ -68,13 +68,13 @@ CTime & CTime::operator++()
 //постфиксный инкремент
 CTime const CTime::operator++(int)
 {
-	CTime tempTime = m_timestamp;
+	unsigned tempTime = m_timestamp;
 	m_timestamp++;
 	if (m_timestamp >= SECONDS_IN_DAY)
 	{
 		m_timestamp = m_timestamp - SECONDS_IN_DAY;
 	}
-	return tempTime;
+	return CTime(tempTime);
 }
 
 //префиксный декремент
@@ -94,7 +94,7 @@ CTime & CTime::operator--()
 //постфиксный декремент
 CTime const CTime::operator--(int)
 {
-	CTime tempTime = m_timestamp;
+	unsigned tempTime = m_timestamp;
 	if (m_timestamp == 0)
 	{
 		m_timestamp = SECONDS_IN_DAY - ONE_SECOND;
@@ -103,7 +103,7 @@ CTime const CTime::operator--(int)
 	{
 		--m_timestamp;
 	}
-	return tempTime;
+	return CTime(tempTime);
 }
 
 //бинарное сложение времени

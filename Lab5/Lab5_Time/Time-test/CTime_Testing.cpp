@@ -130,7 +130,7 @@ TEST_CASE("You can do time1 += time2")
 	CHECK(time3.GetTimeStamp() == 400);
 
 	CTime time4(LAST_SECOND_OF_DAY);
-	time4 += 5;
+	time4 += CTime(5);
 	CHECK(time4.GetTimeStamp() == 4);
 }
 
@@ -149,7 +149,7 @@ TEST_CASE("You can do time1 -= time2")
 	CHECK(time3.GetTimeStamp() == 0);
 
 	CTime time4(0);
-	time4 -= 5;
+	time4 -= CTime(5);
 	CHECK(time4.GetTimeStamp() == 86395);
 }
 

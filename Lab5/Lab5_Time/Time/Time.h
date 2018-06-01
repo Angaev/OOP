@@ -3,11 +3,12 @@
 class CTime
 {
 public:
+
 	//инициализирует время заданным количеством часов, минут, секунд
 	CTime(unsigned hours, unsigned minutes, unsigned seconds = 0);
 	
 	// инициализирует время количеством секунд после полуночи
-	CTime(unsigned timeStamp = 0);
+	explicit CTime(unsigned timeStamp = 0);
 
 	// возвращает количество часов
 	unsigned GetHours()const;
