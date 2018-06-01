@@ -224,6 +224,10 @@ TEST_CASE("You can compare two time value (use operator == or !=)")
 	CHECK(time1 != time3);
 	CHECK(time1 != time4);
 	CHECK(time1 == time1);
+	CHECK(!(time1 != time2));
+	CHECK(!(time1 == time3));
+
+
 }
 
 TEST_CASE("You can compare two time value (use operator < or >)")
@@ -233,10 +237,13 @@ TEST_CASE("You can compare two time value (use operator < or >)")
 	CTime time3(99);
 	CTime time4(101);
 
-	CHECK(!(time1 > time2));
-	CHECK(time1 > time3);
 	CHECK(time1 < time4);
+	CHECK(!(time1 < time1));
+	CHECK(!(time1 < time3));
+
+	CHECK(time1 > time3);
 	CHECK(!(time1 > time1));
+	CHECK(!(time1 > time4));
 }
 
 TEST_CASE("You can compare two time value (use operator <= or >=)")
@@ -247,7 +254,10 @@ TEST_CASE("You can compare two time value (use operator <= or >=)")
 	CTime time4(101);
 
 	CHECK(time1 >= time2);
+	CHECK(!(time1 >= time4));
 	CHECK(time1 >= time3);
+
+	CHECK(time1 <= time2);
 	CHECK(time1 <= time4);
-	CHECK(time1 >= time1);
+	CHECK(!(time1 <= time3));
 }
