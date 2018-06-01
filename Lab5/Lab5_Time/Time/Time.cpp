@@ -25,9 +25,13 @@ CTime::CTime(unsigned hours, unsigned minutes, unsigned seconds)
 	m_timestamp = hours * SECONDS_IN_HOUR + minutes * SECONDS_IN_MINUTE + seconds;
 }
 
-CTime::CTime(unsigned timeStamp) :
-	m_timestamp(timeStamp)
+CTime::CTime(unsigned timeStamp) 
 {
+	if (timeStamp >= SECONDS_IN_DAY)
+	{
+		throw std::invalid_argument("Invalid hour, minute or (and) second value");
+	}
+	m_timestamp = timeStamp;
 }
 
 unsigned CTime::GetHours() const

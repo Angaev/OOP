@@ -18,9 +18,11 @@ TEST_CASE("You can set time in format seconds after 00:00:00")
 	REQUIRE(time.GetTimeStamp() == 66685);
 }
 /*
-TEST_CASE("You can't create time like 25.61.61")
+TEST_CASE("You can't create incorrect time ")
 {
 	CHECK_THROWS(CTime time(25, 61, 61));
+
+	CHECK_THROWS(CTime time1(LAST_SECOND_OF_DAY + 10));
 }*/
 
 TEST_CASE("You can get saved time")
