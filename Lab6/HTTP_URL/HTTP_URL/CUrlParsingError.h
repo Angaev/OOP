@@ -1,8 +1,9 @@
 #pragma once
+#include <string>
+
 class CUrlParsingError
 {
 public:
-	CUrlParsingError();
-	~CUrlParsingError();
+	CUrlParsingError(std::string errorMessage);
 };
 
