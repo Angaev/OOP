@@ -12,7 +12,7 @@ constexpr unsigned DEFALUT_HTTPS_PORT = 443;
 
 bool IsBetween(unsigned short number, unsigned left, unsigned right)
 {
-	if (number <= right || number >= left)
+	if (number >= left || number <= right)
 	{
 		return true;
 	}
@@ -55,12 +55,40 @@ CHttpUrl::CHttpUrl(std::string const & url) :
 
 }
 
+unsigned short SetDefaultPortByProtocol(Protocol protocol)
+{
+	if (protocol == HTTP)
+	{
+		return DEFALUT_HTTP_PORT;
+	}
+	return DEFALUT_HTTPS_PORT;
+}
+
 CHttpUrl::CHttpUrl(std::string const & domain, std::string const & document, Protocol protocol)
 {
+	m_domain = ParseDomain(domain);
+	m_document = ParseDocument(document);
+	m_protocol = protocol;
+	m_port = SetDefaultPortByProtocol(m_protocol);
+	m_url = ProtocolToString(m_protocol) + "://" + m_domain + m_document;
 }
 
 CHttpUrl::CHttpUrl(std::string const & domain, std::string const & document, Protocol protocol, unsigned short port)
 {
+	m_domain = ParseDomain(domain);
+	m_document = ParseDocument(document);
+	m_protocol = protocol;
+	m_port = ParsePort(to_string(port));
+
+
+	m_url = ProtocolToString(m_protocol) + "://" + m_domain;
+
+	if (!(m_port == DEFALUT_HTTP_PORT || m_port == DEFALUT_HTTPS_PORT))
+	{
+		m_url += ":" + to_string(m_port);
+	}
+
+	m_url += m_document;
 }
 
 std::string CHttpUrl::GetURL() const
@@ -109,6 +137,10 @@ Protocol CHttpUrl::ParseProtocol(string const & rawData)
 
 string CHttpUrl::ParseDomain(string const & rawData)
 {
+	if (rawData.empty())
+	{
+		throw CUrlParsingError("Empty domain");
+	}
 	string tempString = rawData;
 	transform(tempString.begin(), tempString.end(), tempString.begin(), ::tolower);
 
