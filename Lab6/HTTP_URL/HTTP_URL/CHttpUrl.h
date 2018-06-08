@@ -30,12 +30,6 @@ public:
 
 private:
 
-	Protocol ParseProtocol(std::string const& rawData);
-	std::string ParseDomain(std::string const& rawData);
-	std::string ParseDocument(std::string const& rawData);
-	unsigned short ParsePort(std::string const& rawData);
-	
-
 	std::string m_url = {};
 	std::string m_document = {};
 	std::string m_domain = {};
