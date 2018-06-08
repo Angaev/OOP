@@ -33,7 +33,7 @@ bool IsUrlEqual(CHttpUrl const& url, string const& domain, string const& documen
 }
 
 
-TEST_CASE("Can construct url")
+TEST_CASE("You can construct url")
 {
 	CHttpUrl resource("http://google.com/search.php");
 	CHECK(IsUrlEqual(resource, "google.com", "/search.php", HTTP, DEFALUT_HTTP_PORT));
@@ -58,7 +58,7 @@ TEST_CASE("If construct url using not HTTP or HTTPS, you get throw")
 	CHECK_NOTHROW(CHttpUrl("Http://google.com/search.php"));
 }
 
-TEST_CASE("For http protocol construct 80 port. For https protocol construct 443 port")
+TEST_CASE("For http protocol construct default port (80). For https protocol construct default port (443)")
 {
 	CHttpUrl resource1("http://google.com");
 	CHECK(resource1.GetPort() == 80);
