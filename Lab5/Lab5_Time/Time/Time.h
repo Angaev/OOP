@@ -4,6 +4,9 @@ class CTime
 {
 public:
 
+	//Конструктор по умолчанию
+	CTime();
+
 	//инициализирует время заданным количеством часов, минут, секунд
 	CTime(unsigned hours, unsigned minutes, unsigned seconds = 0);
 	

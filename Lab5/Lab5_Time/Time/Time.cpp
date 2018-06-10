@@ -15,6 +15,11 @@ unsigned PreventOverFlowSecond(unsigned timeStamp)
 	return timeStamp % SECONDS_IN_DAY;
 }
 
+CTime::CTime() :
+	m_timestamp(0)
+{
+}
+
 CTime::CTime(unsigned hours, unsigned minutes, unsigned seconds)
 {
 	if (hours >= HOURS_IN_DAY || minutes >= MINUTES_IN_HOUR || seconds >= SECONDS_IN_MINUTE)
