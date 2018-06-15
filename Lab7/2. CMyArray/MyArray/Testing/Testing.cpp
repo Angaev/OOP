@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "../../../../Catch/catch.hpp"
 #include "../CMyArray/CMyArray.h"
+#include "../CMyArray/CMyIterator.h"
 
+#include <algorithm>
 
 using namespace std;
 
@@ -96,4 +98,17 @@ TEST_CASE("You can resize array")
 	arr2.ReSize(1);
 	CHECK(arr2.GetSize() == 1);
 
+}
+
+TEST_CASE("You can use iterator")
+{
+	CMyArray<string> arr0;
+	arr0.PushBack("hello"s);
+	arr0.PushBack(" "s);
+	arr0.PushBack("World"s);
+	CHECK(arr0.GetSize() == 3);
+
+	string sum{};
+	for_each(arr0.begin(), arr0.end(), [sum](auto & item) {sum += item});
+	CHECK(sum == "hello World"s);
 }

@@ -1,9 +1,20 @@
 #pragma once
 
+#include "CMyIterator.h"
+
 template <typename T>
 class CMyArray
 {
+	template <typename T, bool isReverse>
+	friend class CMyIterator;
+
 public:
+
+	typedef CMyIterator<T, false> iterator;
+	typedef CMyIterator<const T, false> const_iterator;
+	typedef CMyIterator<T, true> reverse_iterator;
+	typedef CMyIterator<const T, true> const_reverse_iterator;
+
 	CMyArray() = default;
 
 	CMyArray(CMyArray const& arr);
@@ -86,6 +97,41 @@ public:
 	size_t GetCapacity()const
 	{
 		return m_endOfCapacity - m_begin;
+	}
+
+	iterator begin() 
+	{
+		return iterator(m_begin);
+	}
+
+	iterator end() 
+	{
+		return iterator(m_end);
+	}
+
+	const_iterator begin() const
+	{
+		return const_iterator(m_begin);
+	}
+
+	const_iterator end() const
+	{
+		return const_iterator(m_end);
+	}
+
+	reverse_iterator rbegin() 
+	{
+		return reverse_iterator(m_end - 1);
+	}
+
+	reverse_iterator rend()
+	{
+		return reverse_iterator(m_begin - 1);
+	}
+
+	const_reverse_iterator rbegin() const
+	{
+		return const_reverse_iterator(m_begin - 1);
 	}
 
 private:
