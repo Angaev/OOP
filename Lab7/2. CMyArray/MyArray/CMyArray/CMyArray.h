@@ -1,24 +1,28 @@
 #pragma once
-
-#include "CMyIterator.h"
+#include "CArrayIterator.h"
 
 template <typename T>
 class CMyArray
 {
 	template <typename T, bool isReverse>
-	friend class CMyIterator;
+	friend class CArrayIterator;
 
 public:
+	typedef CArrayIterator<T, false> iterator;
+	typedef CArrayIterator<const T, false> const_iterator;
+	typedef CArrayIterator<T, true> reverse_iterator;
+	typedef CArrayIterator<const T, true> const_reverse_iterator;
 
-	typedef CMyIterator<T, false> iterator;
-	typedef CMyIterator<const T, false> const_iterator;
-	typedef CMyIterator<T, true> reverse_iterator;
-	typedef CMyIterator<const T, true> const_reverse_iterator;
 
 	CMyArray() = default;
 
+	//констуктор копирования
 	CMyArray(CMyArray const& arr);
 
+	//констуктор перемещения
+	CMyArray(CMyArray&& arr);
+
+	//добавление элемента в конец массива
 	void PushBack(T const& value)
 	{
 		if (m_end == m_endOfCapacity) // no free space
@@ -53,11 +57,13 @@ public:
 		}
 	}
 
-	size_t GetSize()const
+	//возвращает количество элементов в массиве
+	size_t GetSize() const noexcept
 	{
 		return m_end - m_begin;
 	}
 
+	//переопределяет размер массива
 	void ReSize(size_t newSize)
 	{
 		size_t oldSize = GetSize();
@@ -88,50 +94,89 @@ public:
 		}
 	}
 	
-	void Clear()
+	//очищает массив
+	void Clear() noexcept
 	{
 		DeleteItems(m_begin, m_end);
 		m_end = m_begin = m_endOfCapacity = nullptr;
 	}
 
-	size_t GetCapacity()const
+	//возвращает размер разметки массива
+	size_t GetCapacity() const noexcept
 	{
 		return m_endOfCapacity - m_begin;
 	}
 
-	iterator begin() 
+	//индексный доступ к элементам массива
+	T& operator[](size_t index)
 	{
-		return iterator(m_begin);
+		if (index >= GetSize())
+		{
+			throw std::out_of_range("index out of range");
+		}
+
+		return *(m_begin + index);
+	}
+	
+	//оператор копирования
+	CMyArray& operator=(const CMyArray& arr) noexcept
+	{
+		if (&arr != this)
+		{
+			*this = std::move(CMyArray<T>(arr));
+		}
+
+		return *this;
 	}
 
-	iterator end() 
+	//оператор перемещения
+	CMyArray& operator=(CMyArray&& arr)
 	{
-		return iterator(m_end);
+		if (&arr != this)
+		{
+			Clear();
+			m_begin = arr.m_begin;
+			m_end = arr.m_end;
+			m_endOfCapacity = arr.m_endOfCapacity;
+
+			arr.m_begin = arr.m_end = arr.m_endOfCapacity = nullptr;
+
+		}
+
+		return *this;
 	}
 
-	const_iterator begin() const
+	const_iterator begin() const noexcept
 	{
 		return const_iterator(m_begin);
 	}
-
-	const_iterator end() const
+	const_iterator end() const noexcept
 	{
 		return const_iterator(m_end);
 	}
-
-	reverse_iterator rbegin() 
+	iterator begin() noexcept
+	{
+		return iterator(m_begin);
+	}
+	iterator end() noexcept
+	{
+		return iterator(m_end);
+	}
+	const_reverse_iterator rbegin() const noexcept
+	{
+		return const_reverse_iterator(m_end - 1);
+	}
+	const_reverse_iterator rend() const noexcept
+	{
+		return const_reverse_iterator(m_begin - 1);
+	}
+	reverse_iterator rbegin() noexcept
 	{
 		return reverse_iterator(m_end - 1);
 	}
-
-	reverse_iterator rend()
+	reverse_iterator rend() noexcept
 	{
 		return reverse_iterator(m_begin - 1);
-	}
-
-	const_reverse_iterator rbegin() const
-	{
-		return const_reverse_iterator(m_begin - 1);
 	}
 
 private:
@@ -154,7 +199,7 @@ private:
 		}
 	}
 
-	static void DestroyItems(T *from, T *to)
+	static void DestroyItems(T *from, T *to) noexcept
 	{
 		// dst - адрес объект, при конструирование которого было выброшено исключение
 		// to - первый скорнструированный объект
@@ -192,7 +237,7 @@ private:
 template<typename T>
 inline CMyArray<T>::CMyArray(CMyArray const & arr)
 {
-	const size = arr.getSize();
+	const size_t size = arr.GetSize();
 	if (size != 0)
 	{
 		m_begin = RawAlloc(size);
@@ -209,3 +254,13 @@ inline CMyArray<T>::CMyArray(CMyArray const & arr)
 
 	}
 }
+
+template<typename T>
+CMyArray<T>::CMyArray(CMyArray && arr)
+	: m_begin(arr.m_begin)
+	, m_end(arr.m_end)
+	, m_endOfCapacity(arr.m_endOfCapacity)
+{
+	arr.m_begin = arr.m_end = arr.m_endOfCapacity = nullptr;
+}
+

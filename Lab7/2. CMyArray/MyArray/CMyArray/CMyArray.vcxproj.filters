@@ -24,7 +24,7 @@
     <ClInclude Include="CMyArray.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="CMyIterator.h">
+    <ClInclude Include="CArrayIterator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
