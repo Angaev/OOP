@@ -22,8 +22,12 @@ void SetUserSkipMove(bool isFirstPlayerMove, bool& isFirstPlayerSkipMove, bool& 
 
 void AddUsedWord(map<string, bool> &userWords, const string& word, bool isFirstPlayerMove);
 
-void PrintPlayerScore(bool isFirstPlayer, const UserScore &userScore);
+void PrintPlayerScore(bool isFirstPlayer, const UserScore& userScore);
 
-void PrintPlayerWordList(bool isFirstPlayer, map<string, bool> &userWords);
+void PrintPlayerWordList(bool isFirstPlayer, map<string, bool>& userWords);
 
 void PrintWinnerMessage(const UserScore& userScore);
+
+void AddScoreToPlayer(UserScore& userScore, bool isFirstPlayer, size_t score);
+
+void FlipPlayerSkipMove(bool isFirstPlayer, bool& isPlayerSkipMove);

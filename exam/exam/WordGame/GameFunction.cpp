@@ -110,3 +110,20 @@ void PrintWinnerMessage(const UserScore & userScore)
 
 	cout << " have won!\n";
 }
+
+void AddScoreToPlayer(UserScore & userScore, bool isFirstPlayer, size_t score)
+{
+	if (isFirstPlayer)
+	{
+		userScore.firstUserScore += score;
+	}
+	else
+	{
+		userScore.secondUserScore += score;
+	}
+}
+
+void FlipPlayerSkipMove(bool isFirstPlayer, bool& isPlayerSkipMove)
+{
+
+}
