@@ -38,7 +38,7 @@ bool CanMakeSubword(const string& word, const string& subWord)
 	return true;
 }
 
-bool IsWordUsedBefore(const set<string> &userWords, const string& word)
+bool IsWordUsedBefore(const map<string, bool> &userWords, const string& word)
 {
 
 	auto search = userWords.find(word);
@@ -59,5 +59,11 @@ void SetUserSkipMove(bool isFirstPlayerMove, bool & isFirstPlayerSkipMove, bool 
 	{
 		isSecondPlayerSkipMove = true;
 	}
+}
+
+void AddUsedWord(map<string, bool>& userWords, const string & word, bool isFirstPlayerMove)
+{
+	pair<string, bool> data = { word, isFirstPlayerMove };
+	userWords.insert(data);
 }
 
