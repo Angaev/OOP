@@ -49,7 +49,7 @@ bool IsWordUsedBefore(const map<string, bool> &userWords, const string& word)
 	return false;
 }
 
-void SetUserSkipMove(bool isFirstPlayerMove, bool & isFirstPlayerSkipMove, bool isSecondPlayerSkipMove)
+void SetUserSkipMove(bool isFirstPlayerMove, bool& isFirstPlayerSkipMove, bool& isSecondPlayerSkipMove)
 {
 	if (isFirstPlayerMove)
 	{
@@ -67,3 +67,46 @@ void AddUsedWord(map<string, bool>& userWords, const string & word, bool isFirst
 	userWords.insert(data);
 }
 
+void PrintPlayerScore(bool isFirstPlayer, const UserScore &userScore)
+{
+	cout << "Player " << ((isFirstPlayer) ? 1 : 2) << " words(";
+	if (isFirstPlayer)
+	{
+		cout << userScore.firstUserScore << " points) :\n";
+	}
+	else
+	{
+		cout << userScore.secondUserScore << " points) :\n";
+	}
+}
+
+void PrintPlayerWordList(bool isFirstPlayer, map<string, bool>& userWords)
+{
+	
+	for (auto item : userWords)
+	{
+		if (item.second == isFirstPlayer)
+		{
+			cout << item.first << " " << item.first.size() << "\n";
+		}
+	}
+}
+
+void PrintWinnerMessage(const UserScore & userScore)
+{
+	cout << "Player ";
+	if (userScore.firstUserScore > userScore.secondUserScore)
+	{
+		cout << 1;
+	}
+	if (userScore.firstUserScore < userScore.secondUserScore)
+	{
+		cout << 2;
+	}
+	if (userScore.firstUserScore == userScore.secondUserScore)
+	{
+		cout << 1 << " and "<< 2;
+	}
+
+	cout << " have won!\n";
+}
