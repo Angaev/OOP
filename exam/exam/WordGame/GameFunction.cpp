@@ -6,11 +6,15 @@ bool CanMakeSubword(const string& word, const string& subWord)
 {
 	map<char, size_t> letterStatistic; // разобранное слово
 
-	//todo круто было бы не использовать for
-	for (size_t i = 0; i != word.size(); ++i)
+	for (auto letter: word)
+	{
+		++letterStatistic[letter];
+	}
+	
+	/*for (size_t i = 0; i != word.size(); ++i)
 	{
 		++letterStatistic[word[i]];
-	}
+	}*/
 
 	for (size_t i = 0; i != subWord.size(); ++i)
 	{
@@ -121,9 +125,4 @@ void AddScoreToPlayer(UserScore & userScore, bool isFirstPlayer, size_t score)
 	{
 		userScore.secondUserScore += score;
 	}
-}
-
-void FlipPlayerSkipMove(bool isFirstPlayer, bool& isPlayerSkipMove)
-{
-
 }
